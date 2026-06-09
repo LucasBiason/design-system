@@ -1,0 +1,59 @@
+{
+  "name": "nortear-design-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6009",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook --url http://127.0.0.1:6009",
+    "test-storybook:component": "test-storybook --url http://127.0.0.1:6009",
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6009 --silent\" \"npx wait-on tcp:6009 && npm run test-storybook\"",
+    "chromatic": "npx chromatic"
+  },
+  "dependencies": {
+    "@tanstack/table-core": "^8.21.3",
+    "@tanstack/virtual-core": "^3.13.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "echarts": "^6.1.0",
+    "lucide": "^0.525.0",
+    "quill": "^2.0.3",
+    "tslib": "^2.8.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.1",
+    "@storybook/addon-a11y": "^10.4.0",
+    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/addon-themes": "^10.4.0",
+    "@storybook/addon-vitest": "^10.4.0",
+    "@storybook/html-vite": "^10.4.0",
+    "@storybook/test-runner": "^0.24.3",
+    "@types/node": "^24.12.2",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5",
+    "axe-playwright": "^2.2.2",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-storybook": "^10.4.0",
+    "http-server": "^14.1.1",
+    "playwright": "^1.59.1",
+    "storybook": "^10.4.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^4.1.5",
+    "wait-on": "^9.0.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}

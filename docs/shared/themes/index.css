@@ -1,0 +1,11 @@
+/*
+ * ─── Temas de Marca ───────────────────────────────────────────────────────────
+ * Default é o tema padrão (sem classe). Warm e Cold são variantes de cor.
+ *
+ * Todos os projetos importam via: @import "@shared/themes/index.css"
+ */
+@import "./default.css";
+@import "./warm.css";
+@import "./cold.css";
+@import "./densities.css";
+@import "./fonts.css";

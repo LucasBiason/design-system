@@ -1,0 +1,44 @@
+import type { Meta, StoryObj } from '@storybook/vue3';
+import { expect, waitFor } from 'storybook/test';
+import { h } from 'vue';
+import { ChartContainer, buildBarOption } from './index';
+
+const xMonths = ['Jan', 'Feb', 'Mar', 'Apr'];
+const singleSeries = [{ name: 'Vendas', data: [186, 305, 237, 73] }];
+const multipleSeries = [
+  { name: 'Vendas',     data: [186, 305, 237, 73] },
+  { name: 'Devoluções', data: [10, 25, 18, 7] },
+  { name: 'Trocas',     data: [4, 12, 8, 3] },
+];
+
+const meta: Meta = {
+  parameters: { controls: { disable: true }, actions: { disable: true } },
+  title: 'UI/Chart/Estados',
+  tags: ['display'],
+};
+export default meta;
+type Story = StoryObj;
+
+async function expectRendered(el: HTMLElement) {
+  await waitFor(() => {
+    const n = el.querySelector('[data-slot=chart] svg, [data-slot=chart] canvas');
+    expect(n).not.toBeNull();
+  }, { timeout: 2000 });
+}
+
+export const Vazio: Story = {
+  render: () => h(ChartContainer, { option: buildBarOption({ data: [] }), class: 'h-[200px] w-[480px]' }),
+  parameters: { docs: { description: { story: '"No data" automático do ECharts quando series vazia.' } } },
+};
+
+export const UmaSerie: Story = {
+  render: () => h(ChartContainer, { option: buildBarOption({ xAxis: xMonths, series: singleSeries }), class: 'h-[240px] w-[480px]' }),
+  parameters: { docs: { description: { story: 'Uma série — legenda oculta por default.' } } },
+  play: async ({ canvasElement, step }) => step('Renderizado', () => expectRendered(canvasElement)),
+};
+
+export const MultiplasSeries: Story = {
+  render: () => h(ChartContainer, { option: buildBarOption({ xAxis: xMonths, series: multipleSeries }), class: 'h-[280px] w-[500px]' }),
+  parameters: { docs: { description: { story: 'Múltiplas séries — legenda automática.' } } },
+  play: async ({ canvasElement, step }) => step('Renderizado', () => expectRendered(canvasElement)),
+};

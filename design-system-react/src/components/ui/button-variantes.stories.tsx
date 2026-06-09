@@ -1,0 +1,106 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { within, expect } from "storybook/test";
+import { Button } from "./button";
+
+const meta = {
+  title: "UI/Button/Variantes",
+  tags: ["form"],
+  component: Button,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: () => <Button>Salvar</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante primária. Use para a ação principal de uma seção.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /salvar/i })).toBeInTheDocument();
+  },
+};
+
+export const Destructive: Story = {
+  render: () => <Button variant="destructive">Excluir conta</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante destrutiva. Use para ações irreversíveis como excluir ou remover.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /excluir conta/i })).toBeInTheDocument();
+  },
+};
+
+export const Outline: Story = {
+  render: () => <Button variant="outline">Cancelar</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante secundária com borda. Use ao lado da ação primária em pares de ações.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /cancelar/i })).toBeInTheDocument();
+  },
+};
+
+export const Secondary: Story = {
+  render: () => <Button variant="secondary">Ver detalhes</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante secundária sólida. Use para ações complementares de menor ênfase.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /ver detalhes/i })).toBeInTheDocument();
+  },
+};
+
+export const Ghost: Story = {
+  render: () => <Button variant="ghost">Fechar</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante sem borda ou fundo. Use em toolbars e menus para reduzir ruído visual.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /fechar/i })).toBeInTheDocument();
+  },
+};
+
+export const Link: Story = {
+  render: () => <Button variant="link">Saiba mais</Button>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Variante com aparência de link. Use quando a ação for navegacional em contexto textual.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("button", { name: /saiba mais/i })).toBeInTheDocument();
+  },
+};
