@@ -1,0 +1,81 @@
+# ${{ values.displayName }}
+
+> ${{ values.description }}
+
+Design system com documentação centralizada, temas customizáveis e pipeline de qualidade com IA.
+
+## Stack
+
+**${{ values.stack }}** — `design-system-${{ values.stack }}/`
+
+> Este projeto usa uma única stack. Para usar o mesmo design system em outro framework,
+> gere um novo projeto com este template escolhendo a outra stack.
+
+## Estrutura
+
+```
+${{ values.projectName }}/
+├── design-system-${{ values.stack }}/    # Código da stack escolhida
+├── docs/
+│   └── shared/
+│       ├── content/               # Traduções dos componentes (pt-BR / en / es)
+│       ├── guidelines/            # Regras compartilhadas entre stacks
+│       ├── themes/                # Temas CSS (customizar aqui)
+│       └── tokens/                # Tokens de design
+{% if values.includeClaudeSkills %}├── .claude/
+│   └── commands/                  # Skills do Claude Code
+{% endif %}└── package.json                   # Scripts
+```
+
+## Primeiros passos
+
+### 1. Instalar dependências
+
+```bash
+cd design-system-${{ values.stack }} && npm install
+```
+
+### 2. Abrir o Storybook
+
+```bash
+npm run storybook
+```
+
+Acesse `http://localhost:6006`.
+
+### 3. Customizar temas
+
+Edite os arquivos em `docs/shared/themes/` para aplicar as cores do seu produto:
+
+```css
+/* docs/shared/themes/meu-tema.css */
+.meu-tema {
+  --primary: 220 90% 56%;         /* HSL sem vírgulas */
+  --primary-foreground: 0 0% 100%;
+  /* ... */
+}
+```
+
+Registre o tema em `docs/shared/themes/theme-config.ts` e no `.storybook/preview.ts`.
+
+{% if values.includeClaudeSkills %}
+## Skills do Claude Code
+
+Este projeto inclui skills especializadas para criar e manter componentes com IA.
+Abra o projeto no [Claude Code](https://claude.ai/code) e use:
+
+| Skill | O que faz |
+|-------|-----------|
+| `/pipeline new <componente>` | Cria um componente completo (docs + stories + testes) |
+| `/ux-writer <componente>` | Gera conteúdo trilíngue (pt-BR / en / es) |
+| `/dev-${{ values.stack }} <componente>` | Implementa docs page e stories |
+| `/cross-stack <componente>` | Verifica consistência entre projetos irmãos |
+| `/quality <componente>` | Audita play functions e critérios de acessibilidade |
+| `/security <componente>` | Audita vulnerabilidades XSS |
+| `/seo-geo <componente>` | Gera metatags e GEO tags |
+| `/product <componente>` | Sincroniza guidelines com o código |
+
+{% endif %}
+## Licença
+
+MIT © ${{ values.year }} ${{ values.owner }}
