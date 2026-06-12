@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { within, expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Drawer,
   DrawerClose,
@@ -40,8 +40,9 @@ const wrapperStyle: React.CSSProperties = {
   position: "relative",
 };
 
-async function assertSemanticStructure(step: (label: string, fn: () => Promise<void>) => Promise<unknown>) {
-  const body = within(document.body);
+async function assertSemanticStructure(
+  step: (label: string, fn: () => Promise<void>) => Promise<unknown>,
+) {
   await step("Drawer com role=dialog, Title e Description", async () => {
     const dialog = await waitForPortal("dialog");
     await expect(dialog).toBeVisible();
@@ -52,7 +53,7 @@ async function assertSemanticStructure(step: (label: string, fn: () => Promise<v
 
   await step("Footer contém botões de ação", async () => {
     const footer = document.querySelector(
-      "[data-slot='drawer-footer']"
+      "[data-slot='drawer-footer']",
     ) as HTMLElement | null;
     await expect(footer).not.toBeNull();
     const buttons = footer?.querySelectorAll("button") ?? [];
@@ -78,9 +79,7 @@ export const ComFormulario: Story = {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Editar perfil</DrawerTitle>
-            <DrawerDescription>
-              Atualize seu nome e e-mail.
-            </DrawerDescription>
+            <DrawerDescription>Atualize seu nome e e-mail.</DrawerDescription>
           </DrawerHeader>
           <form className="grid gap-3 px-4 pb-2">
             <div className="grid gap-1.5">
@@ -89,7 +88,11 @@ export const ComFormulario: Story = {
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="drawer-email">E-mail</Label>
-              <Input id="drawer-email" type="email" defaultValue="juliana@example.com" />
+              <Input
+                id="drawer-email"
+                type="email"
+                defaultValue="juliana@example.com"
+              />
             </div>
           </form>
           <DrawerFooter>
@@ -150,8 +153,12 @@ export const ComConfirmacao: Story = {
     await assertSemanticStructure(step as never);
     await step("Botões Confirmar e Cancelar presentes", async () => {
       const body = within(document.body);
-      await expect(body.getByRole("button", { name: /Confirmar/i })).toBeInTheDocument();
-      await expect(body.getByRole("button", { name: /Cancelar/i })).toBeInTheDocument();
+      await expect(
+        body.getByRole("button", { name: /Confirmar/i }),
+      ).toBeInTheDocument();
+      await expect(
+        body.getByRole("button", { name: /Cancelar/i }),
+      ).toBeInTheDocument();
     });
   },
 };
@@ -201,7 +208,9 @@ export const ComScroll: Story = {
   play: async ({ step }) => {
     await assertSemanticStructure(step as never);
     await step("30 itens renderizados na lista", async () => {
-      const items = document.querySelectorAll("[data-slot='drawer-content'] li");
+      const items = document.querySelectorAll(
+        "[data-slot='drawer-content'] li",
+      );
       await expect(items.length).toBe(30);
     });
   },

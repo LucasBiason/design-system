@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, screen, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { MailIcon, PhoneIcon, MessageCircleIcon } from "lucide-react";
 import {
   Select,
@@ -36,7 +36,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          "Lista simples — apenas SelectItem dentro do SelectContent. Placeholder \"Selecione...\" visível até o usuário escolher.",
+          'Lista simples — apenas SelectItem dentro do SelectContent. Placeholder "Selecione..." visível até o usuário escolher.',
       },
     },
   },
@@ -58,7 +58,7 @@ export const Default: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const trigger = canvas.getByRole("combobox");
-    await step("Trigger exibe placeholder \"Selecione...\"", async () => {
+    await step('Trigger exibe placeholder "Selecione..."', async () => {
       await expect(trigger).toHaveTextContent(/Selecione/);
       await expect(trigger).toHaveAttribute("aria-label", "Selecionar estado");
     });

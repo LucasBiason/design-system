@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, expect } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Dialog,
   DialogClose,
@@ -63,7 +63,8 @@ export const ConfirmEmail: Story = {
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>
               Enviaremos um link de confirmação para{" "}
-              <strong>maria@exemplo.com</strong>. Verifique sua caixa de entrada.
+              <strong>maria@exemplo.com</strong>. Verifique sua caixa de
+              entrada.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -79,7 +80,6 @@ export const ConfirmEmail: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("dialog");
     await expect(dialog).toHaveAccessibleName(/Confirmar e-mail/i);
   },
@@ -177,7 +177,6 @@ export const MediaPreview: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("dialog");
     await expect(dialog).toBeVisible();
   },

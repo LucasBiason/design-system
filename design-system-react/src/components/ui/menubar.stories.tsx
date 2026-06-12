@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Menubar,
   MenubarContent,
@@ -51,9 +51,7 @@ export const Playground: Story = {
   render: (args) => {
     const { defaultValue, loop } = args;
     return (
-      <div
-        style={{ contain: "layout", minHeight: 320, position: "relative" }}
-      >
+      <div style={{ contain: "layout", minHeight: 320, position: "relative" }}>
         <Menubar loopFocus={loop}>
           <MenubarMenu defaultOpen={defaultValue === "file"}>
             <MenubarTrigger>Arquivo</MenubarTrigger>
@@ -130,7 +128,7 @@ export const Playground: Story = {
           const menu = body.queryByRole("menu");
           if (menu) throw new Error("menu still open");
         },
-        { timeout: 1000 }
+        { timeout: 1000 },
       );
     });
   },

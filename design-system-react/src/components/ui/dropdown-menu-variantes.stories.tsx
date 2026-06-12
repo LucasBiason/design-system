@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -57,11 +57,10 @@ export const Default: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Items renderizam com data-variant=default", async () => {
       await waitForPortal("menu");
       const items = document.querySelectorAll(
-        "[data-slot='dropdown-menu-item']"
+        "[data-slot='dropdown-menu-item']",
       );
       await expect(items.length).toBe(2);
       items.forEach((item) => {
@@ -76,7 +75,7 @@ export const Destructive: Story = {
     docs: {
       description: {
         story:
-          "Item destructive — variant=\"destructive\". Texto text-destructive e fundo bg-destructive/10 no hover; reservado para ações irreversíveis (Excluir, Sair).",
+          'Item destructive — variant="destructive". Texto text-destructive e fundo bg-destructive/10 no hover; reservado para ações irreversíveis (Excluir, Sair).',
       },
     },
   },
@@ -87,17 +86,18 @@ export const Destructive: Story = {
           <Button variant="outline">Abrir</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem variant="destructive">Excluir conta</DropdownMenuItem>
+          <DropdownMenuItem variant="destructive">
+            Excluir conta
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Item renderiza com data-variant=destructive", async () => {
       await waitForPortal("menu");
       const item = document.querySelector(
-        "[data-slot='dropdown-menu-item']"
+        "[data-slot='dropdown-menu-item']",
       ) as HTMLElement | null;
       await expect(item).not.toBeNull();
       await expect(item).toHaveAttribute("data-variant", "destructive");

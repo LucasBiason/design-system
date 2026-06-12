@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, userEvent, screen, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { fn, userEvent, within, expect, waitFor } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { useState } from "react";
 import {
   Select,
@@ -51,7 +51,10 @@ export const Playground: Story = {
             args.onValueChange?.(v as never, {} as never);
           }}
         >
-          <SelectTrigger aria-label="Selecionar estado" disabled={args.disabled}>
+          <SelectTrigger
+            aria-label="Selecionar estado"
+            disabled={args.disabled}
+          >
             <SelectValue placeholder="Selecione..." />
           </SelectTrigger>
           <SelectContent>
@@ -96,14 +99,19 @@ export const Playground: Story = {
       await expect(listbox).toBeVisible();
     });
 
-    await step("Selecionar item atualiza SelectValue e fecha dropdown", async () => {
-      const option = await waitForPortal("option", { name: "Rio de Janeiro" });
-      await userEvent.click(option);
-      await expect(args.onValueChange).toHaveBeenCalledWith("rj");
-      await waitFor(async () => {
-        await expect(trigger).toHaveTextContent(/Rio de Janeiro/);
-        await expect(trigger).toHaveAttribute("aria-expanded", "false");
-      });
-    });
+    await step(
+      "Selecionar item atualiza SelectValue e fecha dropdown",
+      async () => {
+        const option = await waitForPortal("option", {
+          name: "Rio de Janeiro",
+        });
+        await userEvent.click(option);
+        await expect(args.onValueChange).toHaveBeenCalledWith("rj");
+        await waitFor(async () => {
+          await expect(trigger).toHaveTextContent(/Rio de Janeiro/);
+          await expect(trigger).toHaveAttribute("aria-expanded", "false");
+        });
+      },
+    );
   },
 };

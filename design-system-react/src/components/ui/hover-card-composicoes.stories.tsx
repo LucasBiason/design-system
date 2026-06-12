@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { within, expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 
 const meta = {
@@ -66,7 +66,9 @@ export const PerfilDeUsuario: Story = {
                 <p className="text-xs text-muted-foreground">
                   Designer focada em design systems e acessibilidade.
                 </p>
-                <p className="text-xs text-muted-foreground pt-1">142 seguidores</p>
+                <p className="text-xs text-muted-foreground pt-1">
+                  142 seguidores
+                </p>
               </div>
             </div>
           </HoverCardContent>
@@ -76,7 +78,6 @@ export const PerfilDeUsuario: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Estrutura semântica: dialog + link acessível", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -134,11 +135,12 @@ export const PreviewDeLink: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Dialog acessível e link com href válido", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
-      const link = within(document.body).getByRole("link", { name: /example\.com/i });
+      const link = within(document.body).getByRole("link", {
+        name: /example\.com/i,
+      });
       await expect(link).toHaveAttribute("href", "https://example.com");
     });
   },
@@ -183,7 +185,6 @@ export const DefinicaoDeTermo: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Dialog renderizado para termo técnico", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -220,7 +221,9 @@ export const MetricaExplicada: Story = {
             </HoverCardTrigger>
             <HoverCardContent>
               <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Como é calculado</p>
+                <p className="text-sm font-medium leading-none">
+                  Como é calculado
+                </p>
                 <p className="text-xs text-muted-foreground">
                   NPS = % Promotores (9–10) − % Detratores (0–6). Janela móvel
                   de 30 dias com mínimo de 50 respostas.
@@ -233,14 +236,16 @@ export const MetricaExplicada: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
-    await step("Dialog explicativo + botão com aria-label acessível", async () => {
-      const dialog = await waitForPortal("dialog");
-      await expect(dialog).toBeVisible();
-      const trigger = within(document.body).getByRole("button", {
-        name: /Como o NPS é calculado/i,
-      });
-      await expect(trigger).toBeVisible();
-    });
+    await step(
+      "Dialog explicativo + botão com aria-label acessível",
+      async () => {
+        const dialog = await waitForPortal("dialog");
+        await expect(dialog).toBeVisible();
+        const trigger = within(document.body).getByRole("button", {
+          name: /Como o NPS é calculado/i,
+        });
+        await expect(trigger).toBeVisible();
+      },
+    );
   },
 };

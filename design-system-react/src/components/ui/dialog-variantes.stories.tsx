@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, expect } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Dialog,
   DialogClose,
@@ -80,7 +80,9 @@ export const Default: Story = {
             <DialogClose render={<Button variant="outline" />}>
               {t("demonstration.labels.cancel")}
             </DialogClose>
-            <Button onClick={() => trackAction(t("demonstration.labels.action"))}>
+            <Button
+              onClick={() => trackAction(t("demonstration.labels.action"))}
+            >
               {t("demonstration.labels.action")}
             </Button>
           </DialogFooter>
@@ -89,7 +91,6 @@ export const Default: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     await expect(await waitForPortal("dialog")).toBeInTheDocument();
   },
 };
@@ -131,7 +132,11 @@ export const WithForm: Story = {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="dialog-email">E-mail</Label>
-              <Input id="dialog-email" type="email" defaultValue="maria@exemplo.com" />
+              <Input
+                id="dialog-email"
+                type="email"
+                defaultValue="maria@exemplo.com"
+              />
             </div>
             <DialogFooter>
               <DialogClose render={<Button type="button" variant="outline" />}>
@@ -175,13 +180,19 @@ export const WithScrollContent: Story = {
               Leia atentamente as condições antes de aceitar.
             </DialogDescription>
           </DialogHeader>
-          <div tabIndex={0} role="region" aria-label="Conteúdo rolável" className="max-h-[40vh] overflow-y-auto pr-2 text-sm text-muted-foreground space-y-3">
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label="Conteúdo rolável"
+            className="max-h-[40vh] overflow-y-auto pr-2 text-sm text-muted-foreground space-y-3"
+          >
             {Array.from({ length: 12 }).map((_, i) => (
               <p key={i}>
-                Cláusula {i + 1}. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                Cláusula {i + 1}. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
               </p>
             ))}
           </div>
@@ -221,8 +232,8 @@ export const NoFooter: Story = {
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>
-              Este recurso permite visualizar detalhes do item selecionado sem sair
-              da tela atual. Você pode fechar a qualquer momento.
+              Este recurso permite visualizar detalhes do item selecionado sem
+              sair da tela atual. Você pode fechar a qualquer momento.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
@@ -231,7 +242,9 @@ export const NoFooter: Story = {
   },
   play: async () => {
     const body = within(document.body);
-    await expect(await body.findByText(/sobre este recurso/i)).toBeInTheDocument();
+    await expect(
+      await body.findByText(/sobre este recurso/i),
+    ).toBeInTheDocument();
   },
 };
 
@@ -276,7 +289,6 @@ export const WithDestructiveAction: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     const action = await waitForPortal("button", { name: /^Remover item$/i });
     await expect(action).toHaveClass("bg-destructive");
   },
@@ -307,7 +319,9 @@ export const CustomCloseInFooter: Story = {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter showCloseButton>
-            <Button onClick={() => trackAction(t("demonstration.labels.action"))}>
+            <Button
+              onClick={() => trackAction(t("demonstration.labels.action"))}
+            >
               {t("demonstration.labels.action")}
             </Button>
           </DialogFooter>
@@ -316,7 +330,6 @@ export const CustomCloseInFooter: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     await expect(await waitForPortal("dialog")).toBeInTheDocument();
   },
 };

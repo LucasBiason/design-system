@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { within, expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -72,14 +72,13 @@ export const ComLabel: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Menu com Label e Separator", async () => {
       await waitForPortal("menu");
       const labels = document.querySelectorAll(
-        "[data-slot='dropdown-menu-label']"
+        "[data-slot='dropdown-menu-label']",
       );
       const separators = document.querySelectorAll(
-        "[data-slot='dropdown-menu-separator']"
+        "[data-slot='dropdown-menu-separator']",
       );
       await expect(labels.length).toBe(2);
       await expect(separators.length).toBe(1);
@@ -143,7 +142,7 @@ export const ComCheckboxItems: Story = {
       await expect(checkboxes.length).toBe(3);
       // Pelo menos um marcado, pelo menos um desmarcado
       const checked = checkboxes.filter(
-        (el) => el.getAttribute("aria-checked") === "true"
+        (el) => el.getAttribute("aria-checked") === "true",
       );
       await expect(checked.length).toBeGreaterThanOrEqual(1);
     });
@@ -172,9 +171,15 @@ export const ComRadioGroup: Story = {
               <DropdownMenuLabel>Tema</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
-                <DropdownMenuRadioItem value="light">Claro</DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="dark">Escuro</DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="system">Sistema</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="light">
+                  Claro
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="dark">
+                  Escuro
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="system">
+                  Sistema
+                </DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -185,15 +190,18 @@ export const ComRadioGroup: Story = {
   },
   play: async ({ step }) => {
     const body = within(document.body);
-    await step("RadioItems com role=menuitemradio e apenas um checked", async () => {
-      await waitForPortal("menu");
-      const radios = body.getAllByRole("menuitemradio");
-      await expect(radios.length).toBe(3);
-      const checked = radios.filter(
-        (el) => el.getAttribute("aria-checked") === "true"
-      );
-      await expect(checked.length).toBe(1);
-    });
+    await step(
+      "RadioItems com role=menuitemradio e apenas um checked",
+      async () => {
+        await waitForPortal("menu");
+        const radios = body.getAllByRole("menuitemradio");
+        await expect(radios.length).toBe(3);
+        const checked = radios.filter(
+          (el) => el.getAttribute("aria-checked") === "true",
+        );
+        await expect(checked.length).toBe(1);
+      },
+    );
   },
 };
 
@@ -228,11 +236,10 @@ export const ComSubmenu: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("SubTrigger renderizado no menu principal", async () => {
       await waitForPortal("menu");
       const subTrigger = document.querySelector(
-        "[data-slot='dropdown-menu-sub-trigger']"
+        "[data-slot='dropdown-menu-sub-trigger']",
       ) as HTMLElement | null;
       await expect(subTrigger).not.toBeNull();
       await expect(subTrigger?.textContent).toMatch(/Exportar/i);
@@ -273,11 +280,10 @@ export const ComShortcuts: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("3 shortcuts renderizados ao lado dos items", async () => {
       await waitForPortal("menu");
       const shortcuts = document.querySelectorAll(
-        "[data-slot='dropdown-menu-shortcut']"
+        "[data-slot='dropdown-menu-shortcut']",
       );
       await expect(shortcuts.length).toBe(3);
     });

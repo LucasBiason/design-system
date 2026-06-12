@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Command,
   CommandDialog,
@@ -32,7 +32,7 @@ const meta = {
     // Ver PATCHES.md#command-listbox-children.
     a11y: {
       config: {
-        rules: [{ id: 'aria-required-children', enabled: false }],
+        rules: [{ id: "aria-required-children", enabled: false }],
       },
     },
   },
@@ -43,7 +43,8 @@ const meta = {
     },
     shouldFilter: {
       control: "boolean",
-      description: "Habilita filtro interno por texto (desative para filtro externo)",
+      description:
+        "Habilita filtro interno por texto (desative para filtro externo)",
     },
   },
   args: {
@@ -106,7 +107,9 @@ export const Playground: Story = {
       await userEvent.clear(input);
       await userEvent.type(input, "zzz_inexistente");
       await waitFor(() => {
-        expect(canvas.getByText("Nenhum resultado encontrado.")).toBeInTheDocument();
+        expect(
+          canvas.getByText("Nenhum resultado encontrado."),
+        ).toBeInTheDocument();
       });
     });
 
@@ -129,7 +132,9 @@ export const CommandPaletteDialog: Story = {
       <div className="flex flex-col items-center gap-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <span>Pressione</span>
-          <kbd className="rounded border px-1.5 py-0.5 text-xs font-mono bg-muted">⌘K</kbd>
+          <kbd className="rounded border px-1.5 py-0.5 text-xs font-mono bg-muted">
+            ⌘K
+          </kbd>
         </div>
         <Button
           variant="outline"
@@ -179,12 +184,16 @@ export const CommandPaletteDialog: Story = {
     const body = within(document.body);
 
     await step("botão de abertura está presente", async () => {
-      const btn = canvas.getByRole("button", { name: /Abrir command palette/i });
+      const btn = canvas.getByRole("button", {
+        name: /Abrir command palette/i,
+      });
       await expect(btn).toBeInTheDocument();
     });
 
     await step("clicar no botão abre o dialog", async () => {
-      const btn = canvas.getByRole("button", { name: /Abrir command palette/i });
+      const btn = canvas.getByRole("button", {
+        name: /Abrir command palette/i,
+      });
       await userEvent.click(btn);
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
