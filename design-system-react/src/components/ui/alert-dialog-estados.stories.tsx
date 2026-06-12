@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, fn, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -96,7 +96,8 @@ export const Open: Story = {
         <AlertDialogHeader>
           <AlertDialogTitle>Excluir item permanentemente?</AlertDialogTitle>
           <AlertDialogDescription>
-            O item será removido de forma definitiva e não poderá ser recuperado.
+            O item será removido de forma definitiva e não poderá ser
+            recuperado.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -109,7 +110,6 @@ export const Open: Story = {
     </AlertDialog>
   ),
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("alertdialog");
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAccessibleName(/Excluir item/i);
@@ -173,7 +173,8 @@ export const Cancelled: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Usuário cancela — diálogo fecha e `onClick` do Cancel é disparado.",
+        story:
+          "Usuário cancela — diálogo fecha e `onClick` do Cancel é disparado.",
       },
     },
   },
@@ -214,7 +215,7 @@ export const Cancelled: Story = {
             throw new Error("dialog still open");
           }
         },
-        { timeout: 500 }
+        { timeout: 500 },
       );
     });
   },
@@ -284,7 +285,7 @@ export const Controlled: Story = {
             throw new Error("dialog still open");
           }
         },
-        { timeout: 500 }
+        { timeout: 500 },
       );
     });
   },

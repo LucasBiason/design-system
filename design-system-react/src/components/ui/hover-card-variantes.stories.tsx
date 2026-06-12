@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 
 const meta = {
@@ -58,7 +58,9 @@ export const Default: Story = {
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium leading-none">Joana Silva</p>
-              <p className="text-xs text-muted-foreground">Designer · 142 seguidores</p>
+              <p className="text-xs text-muted-foreground">
+                Designer · 142 seguidores
+              </p>
             </div>
           </div>
         </HoverCardContent>
@@ -66,7 +68,6 @@ export const Default: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Content tem role=dialog", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -106,7 +107,6 @@ export const ComDelayCurto: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Content tem role=dialog", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();

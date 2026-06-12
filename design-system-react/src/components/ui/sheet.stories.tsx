@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, fn, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Sheet,
   SheetClose,
@@ -118,7 +118,7 @@ export const Playground: Story = {
             throw new Error("sheet still open");
           }
         },
-        { timeout: 800 }
+        { timeout: 800 },
       );
     };
 
@@ -160,7 +160,7 @@ export const Playground: Story = {
       await userEvent.click(trigger);
       await waitForPortal("dialog");
       const overlay = document.querySelector<HTMLElement>(
-        '[data-slot="sheet-overlay"]'
+        '[data-slot="sheet-overlay"]',
       );
       await expect(overlay).not.toBeNull();
       overlay?.click();

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, waitFor, screen } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Tooltip,
   TooltipContent,
@@ -55,7 +55,10 @@ export const IconBarToolbar: Story = {
     },
   },
   render: () => (
-    <div style={wrapperStyle} className="flex items-center gap-1 rounded-md border border-border p-1 bg-card">
+    <div
+      style={wrapperStyle}
+      className="flex items-center gap-1 rounded-md border border-border p-1 bg-card"
+    >
       <Tooltip>
         <TooltipTrigger
           render={(props) => (
@@ -70,7 +73,12 @@ export const IconBarToolbar: Story = {
       <Tooltip>
         <TooltipTrigger
           render={(props) => (
-            <Button {...props} variant="ghost" size="icon" aria-label="Compartilhar">
+            <Button
+              {...props}
+              variant="ghost"
+              size="icon"
+              aria-label="Compartilhar"
+            >
               <Share2 aria-hidden="true" />
             </Button>
           )}
@@ -111,7 +119,10 @@ export const ComAtalhoTeclado: Story = {
     },
   },
   render: () => (
-    <div style={wrapperStyle} className="flex items-center gap-1 rounded-md border border-border p-1 bg-card">
+    <div
+      style={wrapperStyle}
+      className="flex items-center gap-1 rounded-md border border-border p-1 bg-card"
+    >
       <Tooltip defaultOpen>
         <TooltipTrigger
           render={(props) => (
@@ -145,7 +156,12 @@ export const ComAtalhoTeclado: Story = {
       <Tooltip>
         <TooltipTrigger
           render={(props) => (
-            <Button {...props} variant="ghost" size="icon" aria-label="Sublinhado">
+            <Button
+              {...props}
+              variant="ghost"
+              size="icon"
+              aria-label="Sublinhado"
+            >
               <Underline aria-hidden="true" />
             </Button>
           )}
@@ -178,7 +194,10 @@ export const SidesPosicionamento: Story = {
     },
   },
   render: () => (
-    <div className="grid grid-cols-2 gap-12 p-12" style={{ contain: "layout", minHeight: 280, position: "relative" }}>
+    <div
+      className="grid grid-cols-2 gap-12 p-12"
+      style={{ contain: "layout", minHeight: 280, position: "relative" }}
+    >
       <Tooltip defaultOpen>
         <TooltipTrigger
           render={(props) => (
@@ -226,10 +245,13 @@ export const SidesPosicionamento: Story = {
   ),
   play: async ({ step }) => {
     await step("Quatro tooltips renderizados no portal", async () => {
-      await waitFor(async () => {
-        const tips = screen.getAllByRole("tooltip");
-        await expect(tips.length).toBe(4);
-      }, { timeout: 5000, interval: 100 });
+      await waitFor(
+        async () => {
+          const tips = screen.getAllByRole("tooltip");
+          await expect(tips.length).toBe(4);
+        },
+        { timeout: 5000, interval: 100 },
+      );
     });
   },
 };

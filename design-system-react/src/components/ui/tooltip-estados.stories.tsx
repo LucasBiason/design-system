@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, waitFor, screen } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Tooltip,
   TooltipContent,
@@ -137,11 +137,14 @@ export const Focado: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step("Trigger recebe foco programaticamente (WCAG 1.4.13)", async () => {
-      const trigger = canvas.getByRole("button", { name: /Salvar/i });
-      trigger.focus();
-      await expect(trigger).toHaveFocus();
-    });
+    await step(
+      "Trigger recebe foco programaticamente (WCAG 1.4.13)",
+      async () => {
+        const trigger = canvas.getByRole("button", { name: /Salvar/i });
+        trigger.focus();
+        await expect(trigger).toHaveFocus();
+      },
+    );
 
     await step("Tab move o foco para o trigger (focus-visible)", async () => {
       const trigger = canvas.getByRole("button", { name: /Salvar/i });
@@ -175,7 +178,12 @@ export const Controlado: Story = {
           <Tooltip open={open} onOpenChange={setOpen}>
             <TooltipTrigger
               render={(props) => (
-                <Button {...props} variant="ghost" size="icon" aria-label="Salvar">
+                <Button
+                  {...props}
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Salvar"
+                >
                   <Save aria-hidden="true" />
                 </Button>
               )}
@@ -191,21 +199,25 @@ export const Controlado: Story = {
     const canvas = within(canvasElement);
 
     await step("Botão externo abre o Tooltip", async () => {
-      const openBtn = canvas.getByRole("button", { name: /Abrir externamente/i });
+      const openBtn = canvas.getByRole("button", {
+        name: /Abrir externamente/i,
+      });
       await userEvent.click(openBtn);
       const tip = await waitForPortal("tooltip", { timeout: 5000 });
       await expect(tip).toBeInTheDocument();
     });
 
     await step("Botão externo fecha o Tooltip", async () => {
-      const closeBtn = canvas.getByRole("button", { name: /Fechar externamente/i });
+      const closeBtn = canvas.getByRole("button", {
+        name: /Fechar externamente/i,
+      });
       await userEvent.click(closeBtn);
       await waitFor(
         () => {
           const tip = screen.queryByRole("tooltip");
           if (tip) throw new Error("ainda aberto");
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
     });
   },

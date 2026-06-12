@@ -1,7 +1,7 @@
 import type * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 import { HoverCardDocs } from "@/components/docs/HoverCardDocs";
 import { withAutoDocsTab } from "@/lib/withAutoDocsTab";
@@ -14,7 +14,8 @@ type HoverCardPlaygroundArgs = {
   defaultOpen?: boolean;
 };
 
-const HoverCardForArgs = HoverCard as unknown as React.ComponentType<HoverCardPlaygroundArgs>;
+const HoverCardForArgs =
+  HoverCard as unknown as React.ComponentType<HoverCardPlaygroundArgs>;
 
 const meta = {
   title: "UI/HoverCard",
@@ -62,13 +63,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   render: (args) => {
-    const { side, align, openDelay, closeDelay, defaultOpen } = args as typeof args & {
-      side?: "top" | "bottom" | "left" | "right";
-      align?: "start" | "center" | "end";
-    };
+    const { side, align, openDelay, closeDelay, defaultOpen } =
+      args as typeof args & {
+        side?: "top" | "bottom" | "left" | "right";
+        align?: "start" | "center" | "end";
+      };
     return (
       <div style={{ contain: "layout", minHeight: 250, position: "relative" }}>
-        <HoverCard openDelay={openDelay} closeDelay={closeDelay} defaultOpen={defaultOpen}>
+        <HoverCard
+          openDelay={openDelay}
+          closeDelay={closeDelay}
+          defaultOpen={defaultOpen}
+        >
           <HoverCardTrigger asChild>
             <a
               href="/users/joana"
@@ -87,7 +93,9 @@ export const Playground: Story = {
               </div>
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">Joana Silva</p>
-                <p className="text-xs text-muted-foreground">Designer · 142 seguidores</p>
+                <p className="text-xs text-muted-foreground">
+                  Designer · 142 seguidores
+                </p>
               </div>
             </div>
           </HoverCardContent>
@@ -107,7 +115,7 @@ export const Playground: Story = {
           const dialog = await waitForPortal("dialog");
           await expect(dialog).toBeVisible();
         },
-        { timeout: 2000 }
+        { timeout: 2000 },
       );
     });
 
@@ -118,7 +126,7 @@ export const Playground: Story = {
           const dialog = body.queryByRole("dialog");
           if (dialog) throw new Error("dialog ainda aberto");
         },
-        { timeout: 1500 }
+        { timeout: 1500 },
       );
     });
   },

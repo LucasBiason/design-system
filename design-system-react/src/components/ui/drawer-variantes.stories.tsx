@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Drawer,
   DrawerClose,
@@ -41,7 +41,7 @@ const wrapperStyle: React.CSSProperties = {
 function makeStory(
   direction: "bottom" | "top" | "left" | "right",
   label: string,
-  description: string
+  description: string,
 ): Story {
   return {
     parameters: {
@@ -77,16 +77,21 @@ function makeStory(
       </div>
     ),
     play: async ({ step }) => {
-      const body = within(document.body);
-      await step(`Drawer renderiza com data-vaul-drawer-direction=${direction}`, async () => {
-        const dialog = await waitForPortal("dialog");
-        await expect(dialog).toBeVisible();
-        const content = document.querySelector(
-          "[data-slot='drawer-content']"
-        ) as HTMLElement | null;
-        await expect(content).not.toBeNull();
-        await expect(content).toHaveAttribute("data-vaul-drawer-direction", direction);
-      });
+      await step(
+        `Drawer renderiza com data-vaul-drawer-direction=${direction}`,
+        async () => {
+          const dialog = await waitForPortal("dialog");
+          await expect(dialog).toBeVisible();
+          const content = document.querySelector(
+            "[data-slot='drawer-content']",
+          ) as HTMLElement | null;
+          await expect(content).not.toBeNull();
+          await expect(content).toHaveAttribute(
+            "data-vaul-drawer-direction",
+            direction,
+          );
+        },
+      );
     },
   };
 }
@@ -94,23 +99,23 @@ function makeStory(
 export const Bottom: Story = makeStory(
   "bottom",
   "Abrir bottom",
-  "Mobile-first padrão com handle de drag visível; rounded-t-xl, max-height 80vh."
+  "Mobile-first padrão com handle de drag visível; rounded-t-xl, max-height 80vh.",
 );
 
 export const Top: Story = makeStory(
   "top",
   "Abrir top",
-  "Entra de cima; rounded-b-xl; útil para notificações ou seletores rápidos."
+  "Entra de cima; rounded-b-xl; útil para notificações ou seletores rápidos.",
 );
 
 export const Left: Story = makeStory(
   "left",
   "Abrir left",
-  "Painel lateral à esquerda; w-3/4 mobile, max-w-sm desktop; rounded-r-xl."
+  "Painel lateral à esquerda; w-3/4 mobile, max-w-sm desktop; rounded-r-xl.",
 );
 
 export const Right: Story = makeStory(
   "right",
   "Abrir right",
-  "Painel lateral à direita (padrão para edição em desktop); rounded-l-xl."
+  "Painel lateral à direita (padrão para edição em desktop); rounded-l-xl.",
 );
