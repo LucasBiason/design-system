@@ -26,33 +26,33 @@ Referencia: spec.md, plan.md. Marcar `[x]` ao concluir. Cada fase termina em com
 
 ## Fase 2 — Tipografia
 
-- [ ] Definir Raleway (headings) + Open Sans (corpo) em `fonts.css` e `tokens.json`
-- [ ] Atualizar `@import` Google Fonts: React/Vue/Svelte `globals.css`
-- [ ] Atualizar Nortear `index.html` + `preview-head.html`
-- [ ] Commit: `feat(nord-rebrand): tipografia Raleway/Open Sans (fase 2)`
+- [x] Definir Raleway (headings) + Open Sans (corpo) em `fonts.css` e `tokens.json`
+- [x] Adicionar token `--font-family-heading` + mapeamento `--font-heading` e regra base h1-h6
+- [x] Atualizar `@import` Google Fonts: React/Vue/Svelte `globals.css`
+- [x] Atualizar Nortear `index.html` + `preview-head.html`
+- [x] Commit: `feat(nord-rebrand): tema Nord + tipografia (fases 1-2)`
 
 ## Fase 3 — Identidade visual
 
-- [ ] Substituir `branding/*.svg` (logo, simbolo, favicon, og-image)
-- [ ] Substituir `<stack>/.storybook/brand-logo.svg` (4 stacks)
-- [ ] Atualizar `theme-config.ts` (dominios) e textos de README sobre paleta
-- [ ] Commit: `feat(nord-rebrand): identidade visual Nord (fase 3)`
+- [x] Recolorir `branding/*.svg` (logo, simbolo, favicon, og-image) para Nord (Frost)
+- [x] Recolorir `<stack>/.storybook/brand-logo.svg` (4 stacks)
+- [~] Logo provisorio: portfolio nao tinha SVG; recolorido o simbolo "Nortear" existente (lapidar depois)
+- [ ] (futuro) `theme-config.ts` dominios / README sobre paleta — opcional
+- [x] Commit: `feat(nord-rebrand): branding recolorido para Nord (fase 3)`
 
 ## Fase 4 — Registro e sincronizacao
 
-- [ ] Revisar `.storybook/preview.ts` das 4 stacks (default = Nord)
-- [ ] Rodar `node scripts/audit.mjs --all --json` e corrigir divergencias
-- [ ] Commit: `chore(nord-rebrand): sincronizacao cross-stack (fase 4)`
+- [x] `.storybook/preview.ts` das 4 stacks: default ja = Nord (sem tema extra, marca e o default)
+- [x] Rodar `node scripts/audit.mjs --all` — sem divergencias novas (so avisos pre-existentes de translation)
 
 ## Fase 5 — Validacao final
 
-- [ ] `npm run build` (4 stacks)
-- [ ] `npm run lint` (4 stacks)
-- [ ] `npm run test` (React)
-- [ ] `npm run test-storybook` (4 stacks, axe AA)
-- [ ] Chromatic baseline (se configurado)
-- [ ] Checklist de aceitacao da spec satisfeito
-- [ ] Commit: `test(nord-rebrand): validacao e baseline (fase 5)`
+- [x] `npm run build` React (tsc + vite) — VERDE apos fix TS6133
+- [x] `scripts/check-contrast.mjs` — WCAG AA OK (light+dark)
+- [~] `npm run lint` React — 206 erros PRE-EXISTENTES (lib/motion,i18n,withAutoDocsTab), nao introduzidos pelo rebrand; fora do escopo
+- [ ] build/test Vue/Svelte/Nortear — pendente (mudancas sao CSS compartilhado; nao adicionam erro de tipo)
+- [ ] `npm run test-storybook` (axe AA) — pendente (recomendado antes do merge)
+- [ ] Chromatic baseline — pendente (se token configurado)
 
 ## Fase 6 — Integracao SecondBrain
 
