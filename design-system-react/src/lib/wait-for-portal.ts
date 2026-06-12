@@ -13,7 +13,8 @@ export async function waitForPortal(
     | "listbox"
     | "menu"
     | "menuitem"
-    | "option",
+    | "option"
+    | "button",
   options: { name?: string | RegExp; timeout?: number } = {},
 ): Promise<HTMLElement> {
   const { name, timeout = 4000 } = options;
@@ -27,7 +28,9 @@ export async function waitForPortal(
       const styles = window.getComputedStyle(el);
       const opacity = parseFloat(styles.opacity);
       if (styles.opacity !== "1" && opacity < 0.9) {
-        throw new Error(`Portal ${role} opacity=${styles.opacity}, ainda animando`);
+        throw new Error(
+          `Portal ${role} opacity=${styles.opacity}, ainda animando`,
+        );
       }
       if (el.getAttribute("data-state") === "closed") {
         throw new Error(`Portal ${role} data-state=closed`);

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, fn, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -50,7 +50,8 @@ export const Playground: Story = {
           <AlertDialogHeader>
             <AlertDialogTitle>Excluir sua conta?</AlertDialogTitle>
             <AlertDialogDescription>
-              Essa ação é permanente. Todos os dados, arquivos e histórico serão removidos e não poderão ser recuperados.
+              Essa ação é permanente. Todos os dados, arquivos e histórico serão
+              removidos e não poderão ser recuperados.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -102,7 +103,7 @@ export const Playground: Story = {
             throw new Error("dialog still open");
           }
         },
-        { timeout: 500 }
+        { timeout: 500 },
       );
     });
   },

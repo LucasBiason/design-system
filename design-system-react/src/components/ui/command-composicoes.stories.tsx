@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { useState } from "react";
 import {
   Command,
@@ -46,7 +46,7 @@ const meta = {
     // cmdk listbox tem separator/empty como children — ver PATCHES.md#command-listbox-children
     a11y: {
       config: {
-        rules: [{ id: 'aria-required-children', enabled: false }],
+        rules: [{ id: "aria-required-children", enabled: false }],
       },
     },
   },
@@ -90,12 +90,16 @@ export const ComGrupos: Story = {
     void within(canvasElement);
 
     await step("dois grupos são renderizados", async () => {
-      const groups = canvasElement.querySelectorAll("[data-slot='command-group']");
+      const groups = canvasElement.querySelectorAll(
+        "[data-slot='command-group']",
+      );
       await expect(groups.length).toBe(2);
     });
 
     await step("separador está presente", async () => {
-      const separator = canvasElement.querySelector("[data-slot='command-separator']");
+      const separator = canvasElement.querySelector(
+        "[data-slot='command-separator']",
+      );
       await expect(separator).toBeInTheDocument();
     });
   },
@@ -139,7 +143,9 @@ export const ComShortcuts: Story = {
     const canvas = within(canvasElement);
 
     await step("shortcuts são renderizados nos itens", async () => {
-      const shortcuts = canvasElement.querySelectorAll("[data-slot='command-shortcut']");
+      const shortcuts = canvasElement.querySelectorAll(
+        "[data-slot='command-shortcut']",
+      );
       await expect(shortcuts.length).toBe(3);
     });
 
@@ -170,7 +176,7 @@ export const ComoCombobox: Story = {
     //   - Listbox cmdk: regra aria-required-children já desabilitada no meta (ver PATCHES.md#command-listbox-children)
     // Não desabilitamos só uma regra porque a violation residual depende de timing do click.
     // Ver PATCHES.md#command-combobox-portal-flaky.
-    a11y: { test: 'off' },
+    a11y: { test: "off" },
   },
   render: () => {
     const [open, setOpen] = useState(false);
@@ -217,7 +223,7 @@ export const ComoCombobox: Story = {
                     <CheckIcon
                       className={cn(
                         "ml-auto",
-                        value === framework.value ? "opacity-100" : "opacity-0"
+                        value === framework.value ? "opacity-100" : "opacity-0",
                       )}
                     />
                   </CommandItem>
@@ -246,13 +252,16 @@ export const ComoCombobox: Story = {
       });
     });
 
-    await step("selecionar item fecha o popover e atualiza o trigger", async () => {
-      const reactItem = body.getByText("React");
-      await userEvent.click(reactItem);
-      await waitFor(() => {
-        expect(canvas.getByRole("combobox")).toHaveTextContent("React");
-      });
-    });
+    await step(
+      "selecionar item fecha o popover e atualiza o trigger",
+      async () => {
+        const reactItem = body.getByText("React");
+        await userEvent.click(reactItem);
+        await waitFor(() => {
+          expect(canvas.getByRole("combobox")).toHaveTextContent("React");
+        });
+      },
+    );
 
     // Garante que o popover está fechado antes do postVisit (axe a11y check) rodar.
     // Após selecionar, o popover deve fechar — mas adicionamos Escape como safety net
@@ -275,7 +284,9 @@ export const CommandPalette: Story = {
       <div className="flex flex-col items-center gap-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <span>Pressione</span>
-          <kbd className="rounded border px-1.5 py-0.5 text-xs font-mono bg-muted">⌘K</kbd>
+          <kbd className="rounded border px-1.5 py-0.5 text-xs font-mono bg-muted">
+            ⌘K
+          </kbd>
         </div>
         <Button
           variant="outline"
@@ -325,12 +336,16 @@ export const CommandPalette: Story = {
     const body = within(document.body);
 
     await step("botão de abertura está presente", async () => {
-      const btn = canvas.getByRole("button", { name: /Abrir command palette/i });
+      const btn = canvas.getByRole("button", {
+        name: /Abrir command palette/i,
+      });
       await expect(btn).toBeInTheDocument();
     });
 
     await step("clicar no botão abre o dialog", async () => {
-      const btn = canvas.getByRole("button", { name: /Abrir command palette/i });
+      const btn = canvas.getByRole("button", {
+        name: /Abrir command palette/i,
+      });
       await userEvent.click(btn);
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 import { Button } from "./button";
 
@@ -98,7 +98,9 @@ export const Aberto: Story = {
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium leading-none">Joana Silva</p>
-              <p className="text-xs text-muted-foreground">Designer · 142 seguidores</p>
+              <p className="text-xs text-muted-foreground">
+                Designer · 142 seguidores
+              </p>
             </div>
           </div>
         </HoverCardContent>
@@ -106,7 +108,6 @@ export const Aberto: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Content aberto com role=dialog", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -134,7 +135,12 @@ export const Controlado: Story = {
               Fechar externamente
             </Button>
           </div>
-          <HoverCard open={open} onOpenChange={setOpen} openDelay={0} closeDelay={0}>
+          <HoverCard
+            open={open}
+            onOpenChange={setOpen}
+            openDelay={0}
+            closeDelay={0}
+          >
             <HoverCardTrigger asChild>
               <a
                 href="/users/joana"
@@ -146,7 +152,9 @@ export const Controlado: Story = {
             <HoverCardContent>
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">Joana Silva</p>
-                <p className="text-xs text-muted-foreground">Designer · 142 seguidores</p>
+                <p className="text-xs text-muted-foreground">
+                  Designer · 142 seguidores
+                </p>
               </div>
             </HoverCardContent>
           </HoverCard>
@@ -160,21 +168,25 @@ export const Controlado: Story = {
     const body = within(document.body);
 
     await step("Botão externo abre o HoverCard", async () => {
-      const openBtn = canvas.getByRole("button", { name: /Abrir externamente/i });
+      const openBtn = canvas.getByRole("button", {
+        name: /Abrir externamente/i,
+      });
       await userEvent.click(openBtn);
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
     });
 
     await step("Botão externo fecha o HoverCard", async () => {
-      const closeBtn = canvas.getByRole("button", { name: /Fechar externamente/i });
+      const closeBtn = canvas.getByRole("button", {
+        name: /Fechar externamente/i,
+      });
       await userEvent.click(closeBtn);
       await waitFor(
         () => {
           const dialog = body.queryByRole("dialog");
           if (dialog) throw new Error("ainda aberto");
         },
-        { timeout: 1500 }
+        { timeout: 1500 },
       );
     });
   },

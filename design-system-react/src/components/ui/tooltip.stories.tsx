@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, expect, waitFor, screen } from "storybook/test";
+import { expect } from "storybook/test";
 import {
   Tooltip,
   TooltipContent,
@@ -30,7 +30,8 @@ const meta = {
     side: {
       control: { type: "radio" },
       options: ["top", "bottom", "left", "right"],
-      description: "Lado preferido de abertura do Content (auto-flip on collision).",
+      description:
+        "Lado preferido de abertura do Content (auto-flip on collision).",
     },
     align: {
       control: { type: "radio" },
@@ -69,7 +70,12 @@ export const Playground: Story = {
         <Tooltip key={String(defaultOpen)} defaultOpen={defaultOpen}>
           <TooltipTrigger
             render={(props) => (
-              <Button {...props} variant="ghost" size="icon" aria-label="Salvar">
+              <Button
+                {...props}
+                variant="ghost"
+                size="icon"
+                aria-label="Salvar"
+              >
                 <Save aria-hidden="true" />
               </Button>
             )}
@@ -83,12 +89,15 @@ export const Playground: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const trigger = canvasElement.querySelector(
-      'button[aria-label="Salvar"]'
+      'button[aria-label="Salvar"]',
     ) as HTMLButtonElement | null;
 
-    await step("1. Botão tem aria-label próprio (não substituído pelo Tooltip)", async () => {
-      await expect(trigger).not.toBeNull();
-    });
+    await step(
+      "1. Botão tem aria-label próprio (não substituído pelo Tooltip)",
+      async () => {
+        await expect(trigger).not.toBeNull();
+      },
+    );
 
     await step("2. Trigger pode receber foco (WCAG 1.4.13)", async () => {
       if (trigger) {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { within, expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -104,7 +104,6 @@ export const Aberto: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Menu aberto com role=menu", async () => {
       const menu = await waitForPortal("menu");
       await expect(menu).toBeVisible();
@@ -135,14 +134,13 @@ export const ItemDesabilitado: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Pelo menos um item com data-disabled", async () => {
       await waitForPortal("menu");
       const items = document.querySelectorAll("[data-slot='menubar-item']");
       const disabled = Array.from(items).find(
         (el) =>
           el.hasAttribute("data-disabled") ||
-          el.getAttribute("aria-disabled") === "true"
+          el.getAttribute("aria-disabled") === "true",
       );
       await expect(disabled).toBeTruthy();
     });
@@ -178,7 +176,7 @@ export const CheckboxChecked: Story = {
       const checkboxes = body.getAllByRole("menuitemcheckbox");
       await expect(checkboxes.length).toBe(2);
       const checked = checkboxes.find(
-        (el) => el.getAttribute("aria-checked") === "true"
+        (el) => el.getAttribute("aria-checked") === "true",
       );
       await expect(checked).toBeTruthy();
     });

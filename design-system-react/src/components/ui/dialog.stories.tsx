@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, fn, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Dialog,
   DialogClose,
@@ -123,7 +123,7 @@ export const Playground: Story = {
             throw new Error("dialog still open");
           }
         },
-        { timeout: 800 }
+        { timeout: 800 },
       );
     };
 
@@ -164,7 +164,9 @@ export const Playground: Story = {
       const trigger = canvas.getByRole("button", { name: /Editar perfil/i });
       await userEvent.click(trigger);
       await waitForPortal("dialog");
-      const overlay = document.querySelector<HTMLElement>('[data-slot="dialog-overlay"]');
+      const overlay = document.querySelector<HTMLElement>(
+        '[data-slot="dialog-overlay"]',
+      );
       await expect(overlay).not.toBeNull();
       overlay?.click();
       await waitForClose();
@@ -179,14 +181,19 @@ export const Playground: Story = {
       await waitForClose();
     });
 
-    await step("7. Uncontrolled — defaultOpen reabre sem controle externo", async () => {
-      // Playground usa onOpenChange (uncontrolled): reabrir e fechar via Cancel
-      const trigger = canvas.getByRole("button", { name: /Editar perfil/i });
-      await userEvent.click(trigger);
-      const dialog = await waitForPortal("dialog");
-      const cancel = within(dialog).getByRole("button", { name: /Cancelar/i });
-      await userEvent.click(cancel);
-      await waitForClose();
-    });
+    await step(
+      "7. Uncontrolled — defaultOpen reabre sem controle externo",
+      async () => {
+        // Playground usa onOpenChange (uncontrolled): reabrir e fechar via Cancel
+        const trigger = canvas.getByRole("button", { name: /Editar perfil/i });
+        await userEvent.click(trigger);
+        const dialog = await waitForPortal("dialog");
+        const cancel = within(dialog).getByRole("button", {
+          name: /Cancelar/i,
+        });
+        await userEvent.click(cancel);
+        await waitForClose();
+      },
+    );
   },
 };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect, fn, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -96,7 +96,7 @@ export const Playground: Story = {
           const menu = body.queryByRole("menu");
           if (menu) throw new Error("menu still open");
         },
-        { timeout: 1000 }
+        { timeout: 1000 },
       );
     });
   },
