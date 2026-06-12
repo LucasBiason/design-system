@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, screen, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { userEvent, within, expect, waitFor } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Select,
   SelectContent,
@@ -33,7 +33,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          "Estado inicial — trigger com placeholder \"Selecione...\" e ChevronDown. aria-expanded=\"false\".",
+          'Estado inicial — trigger com placeholder "Selecione..." e ChevronDown. aria-expanded="false".',
       },
     },
   },
@@ -97,7 +97,7 @@ export const Open: Story = {
     docs: {
       description: {
         story:
-          "Dropdown aberto após interação. data-state=\"open\" no trigger, role=\"listbox\" no portal. Foco vai ao primeiro item.",
+          'Dropdown aberto após interação. data-state="open" no trigger, role="listbox" no portal. Foco vai ao primeiro item.',
       },
     },
   },
@@ -169,7 +169,7 @@ export const Invalid: Story = {
     docs: {
       description: {
         story:
-          "Estado de erro via aria-invalid=\"true\" no trigger. Borda --destructive e anel --destructive/20. Use junto com mensagem auxiliar.",
+          'Estado de erro via aria-invalid="true" no trigger. Borda --destructive e anel --destructive/20. Use junto com mensagem auxiliar.',
       },
     },
   },
@@ -187,7 +187,9 @@ export const Invalid: Story = {
           <SelectItem value="rj">Rio de Janeiro</SelectItem>
         </SelectContent>
       </Select>
-      <p className="text-sm text-destructive">Selecione um estado para continuar.</p>
+      <p className="text-sm text-destructive">
+        Selecione um estado para continuar.
+      </p>
     </div>
   ),
   play: async ({ canvasElement, step }) => {
@@ -207,7 +209,7 @@ export const SizeSm: Story = {
     docs: {
       description: {
         story:
-          "Variação compacta via size=\"sm\" no SelectTrigger. Altura --height-sm; útil em toolbars, filtros densos ou linhas de tabela.",
+          'Variação compacta via size="sm" no SelectTrigger. Altura --height-sm; útil em toolbars, filtros densos ou linhas de tabela.',
       },
     },
   },

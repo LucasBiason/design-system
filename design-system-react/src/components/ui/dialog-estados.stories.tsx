@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Dialog,
   DialogClose,
@@ -124,7 +124,6 @@ export const Open: Story = {
     );
   },
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("dialog");
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAccessibleName();
@@ -221,7 +220,9 @@ export const Controlled: Story = {
     const body = within(document.body);
 
     await step("Clique no trigger externo abre o diálogo", async () => {
-      const trigger = canvas.getByRole("button", { name: /Open programmatically/i });
+      const trigger = canvas.getByRole("button", {
+        name: /Open programmatically/i,
+      });
       await userEvent.click(trigger);
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();

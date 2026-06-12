@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, waitFor, screen } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Tooltip,
   TooltipContent,
@@ -134,7 +134,8 @@ export const TextoLongo: Story = {
           )}
         />
         <TooltipContent side="bottom">
-          Cria um link público com permissão de leitura — qualquer pessoa com o link pode visualizar o conteúdo.
+          Cria um link público com permissão de leitura — qualquer pessoa com o
+          link pode visualizar o conteúdo.
         </TooltipContent>
       </Tooltip>
     </div>

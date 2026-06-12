@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { within, expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -73,11 +73,10 @@ export const ComShortcuts: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("3 shortcuts renderizados ao lado dos items", async () => {
       await waitForPortal("menu");
       const shortcuts = document.querySelectorAll(
-        "[data-slot='menubar-shortcut']"
+        "[data-slot='menubar-shortcut']",
       );
       await expect(shortcuts.length).toBe(3);
     });
@@ -113,11 +112,10 @@ export const ComSubmenu: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("SubTrigger renderizado", async () => {
       await waitForPortal("menu");
       const subTrigger = document.querySelector(
-        "[data-slot='menubar-sub-trigger']"
+        "[data-slot='menubar-sub-trigger']",
       ) as HTMLElement | null;
       await expect(subTrigger).not.toBeNull();
       await expect(subTrigger?.textContent).toMatch(/Exportar/i);
@@ -175,7 +173,7 @@ export const ComCheckboxItems: Story = {
       const checkboxes = body.getAllByRole("menuitemcheckbox");
       await expect(checkboxes.length).toBe(3);
       const checked = checkboxes.filter(
-        (el) => el.getAttribute("aria-checked") === "true"
+        (el) => el.getAttribute("aria-checked") === "true",
       );
       await expect(checked.length).toBeGreaterThanOrEqual(1);
     });
@@ -215,15 +213,18 @@ export const ComRadioGroup: Story = {
   },
   play: async ({ step }) => {
     const body = within(document.body);
-    await step("RadioItems com role=menuitemradio e exatamente um checked", async () => {
-      await waitForPortal("menu");
-      const radios = body.getAllByRole("menuitemradio");
-      await expect(radios.length).toBe(3);
-      const checked = radios.filter(
-        (el) => el.getAttribute("aria-checked") === "true"
-      );
-      await expect(checked.length).toBe(1);
-    });
+    await step(
+      "RadioItems com role=menuitemradio e exatamente um checked",
+      async () => {
+        await waitForPortal("menu");
+        const radios = body.getAllByRole("menuitemradio");
+        await expect(radios.length).toBe(3);
+        const checked = radios.filter(
+          (el) => el.getAttribute("aria-checked") === "true",
+        );
+        await expect(checked.length).toBe(1);
+      },
+    );
   },
 };
 
@@ -312,7 +313,6 @@ export const EditorCompleto: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const body = within(document.body);
     await step("4 Triggers no menubar", async () => {
       const triggers = canvas.getAllByRole("menuitem");
       await expect(triggers.length).toBeGreaterThanOrEqual(4);
@@ -320,7 +320,7 @@ export const EditorCompleto: Story = {
     await step("Menu Arquivo aberto com submenu", async () => {
       await waitForPortal("menu");
       const subTrigger = document.querySelector(
-        "[data-slot='menubar-sub-trigger']"
+        "[data-slot='menubar-sub-trigger']",
       );
       await expect(subTrigger).not.toBeNull();
     });

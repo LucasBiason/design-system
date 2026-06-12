@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, expect } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { expect } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -52,7 +52,8 @@ export const Destrutiva: Story = {
         <AlertDialogHeader>
           <AlertDialogTitle>Excluir sua conta?</AlertDialogTitle>
           <AlertDialogDescription>
-            Essa ação é permanente. Todos os dados, arquivos e histórico serão removidos.
+            Essa ação é permanente. Todos os dados, arquivos e histórico serão
+            removidos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -65,7 +66,6 @@ export const Destrutiva: Story = {
     </AlertDialog>
   ),
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("alertdialog");
     await expect(dialog).toBeVisible();
     const action = await waitForPortal("button", { name: /Excluir conta/i });
@@ -91,7 +91,8 @@ export const Neutra: Story = {
         <AlertDialogHeader>
           <AlertDialogTitle>Publicar este conteúdo?</AlertDialogTitle>
           <AlertDialogDescription>
-            Ao publicar, o conteúdo fica visível para todos os usuários. Você poderá editá-lo depois.
+            Ao publicar, o conteúdo fica visível para todos os usuários. Você
+            poderá editá-lo depois.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -102,7 +103,6 @@ export const Neutra: Story = {
     </AlertDialog>
   ),
   play: async () => {
-    const body = within(document.body);
     const dialog = await waitForPortal("alertdialog");
     await expect(dialog).toBeVisible();
     const action = await waitForPortal("button", { name: /^Publicar$/i });

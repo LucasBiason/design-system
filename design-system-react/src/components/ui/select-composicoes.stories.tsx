@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, userEvent, screen, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { fn, userEvent, within, expect, waitFor } from "storybook/test";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import { useState } from "react";
 import {
   Select,
@@ -60,7 +60,10 @@ export const Controlled: Story = {
               <SelectItem value="mg">Minas Gerais</SelectItem>
             </SelectContent>
           </Select>
-          <p className="text-sm text-muted-foreground" data-testid="ctrl-output">
+          <p
+            className="text-sm text-muted-foreground"
+            data-testid="ctrl-output"
+          >
             Selecionado: <span className="font-mono">{value || "—"}</span>
           </p>
         </div>
@@ -75,15 +78,20 @@ export const Controlled: Story = {
       const output = canvas.getByTestId("ctrl-output");
       await expect(output).toHaveTextContent("—");
     });
-    await step("Selecionar Rio de Janeiro atualiza estado controlado", async () => {
-      await userEvent.click(trigger);
-      const option = await waitForPortal("option", { name: "Rio de Janeiro" });
-      await userEvent.click(option);
-      const output = canvas.getByTestId("ctrl-output");
-      await waitFor(async () => {
-        await expect(output).toHaveTextContent("rj");
-      });
-    });
+    await step(
+      "Selecionar Rio de Janeiro atualiza estado controlado",
+      async () => {
+        await userEvent.click(trigger);
+        const option = await waitForPortal("option", {
+          name: "Rio de Janeiro",
+        });
+        await userEvent.click(option);
+        const output = canvas.getByTestId("ctrl-output");
+        await waitFor(async () => {
+          await expect(output).toHaveTextContent("rj");
+        });
+      },
+    );
   },
 };
 
@@ -111,7 +119,11 @@ export const EmFormulario: Story = {
         >
           <div className="flex flex-col gap-2">
             <Label htmlFor="form-state">Estado</Label>
-            <Select name="state" value={value} onValueChange={(v) => setValue(v ?? "")}>
+            <Select
+              name="state"
+              value={value}
+              onValueChange={(v) => setValue(v ?? "")}
+            >
               <SelectTrigger id="form-state" aria-label="Selecionar estado">
                 <SelectValue placeholder="Selecione..." />
               </SelectTrigger>

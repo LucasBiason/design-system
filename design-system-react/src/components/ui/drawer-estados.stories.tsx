@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   Drawer,
   DrawerClose,
@@ -110,7 +110,6 @@ export const Aberto: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Drawer aberto com role=dialog", async () => {
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -164,7 +163,9 @@ export const Controlado: Story = {
     const body = within(document.body);
 
     await step("Botão externo abre o drawer", async () => {
-      const openBtn = canvas.getByRole("button", { name: /Abrir externamente/i });
+      const openBtn = canvas.getByRole("button", {
+        name: /Abrir externamente/i,
+      });
       await userEvent.click(openBtn);
       const dialog = await waitForPortal("dialog");
       await expect(dialog).toBeVisible();
@@ -172,10 +173,13 @@ export const Controlado: Story = {
 
     await step("ESC fecha o drawer controlado", async () => {
       await userEvent.keyboard("{Escape}");
-      await waitFor(() => {
-        const dialog = body.queryByRole("dialog");
-        if (dialog) throw new Error("ainda aberto");
-      }, { timeout: 1000 });
+      await waitFor(
+        () => {
+          const dialog = body.queryByRole("dialog");
+          if (dialog) throw new Error("ainda aberto");
+        },
+        { timeout: 1000 },
+      );
     });
   },
 };

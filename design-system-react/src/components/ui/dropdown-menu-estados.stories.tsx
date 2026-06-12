@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { userEvent, within, expect, waitFor } from "storybook/test";
-import { waitForPortal, waitForPortalGone } from "@/lib/wait-for-portal";
+import { waitForPortal } from "@/lib/wait-for-portal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -144,7 +144,9 @@ export const Controlado: Story = {
     const body = within(document.body);
 
     await step("Botão externo abre o menu", async () => {
-      const openBtn = canvas.getByRole("button", { name: /Abrir externamente/i });
+      const openBtn = canvas.getByRole("button", {
+        name: /Abrir externamente/i,
+      });
       await userEvent.click(openBtn);
       const menu = await waitForPortal("menu");
       await expect(menu).toBeVisible();
@@ -157,7 +159,7 @@ export const Controlado: Story = {
           const menu = body.queryByRole("menu");
           if (menu) throw new Error("ainda aberto");
         },
-        { timeout: 1000 }
+        { timeout: 1000 },
       );
     });
   },
@@ -186,14 +188,15 @@ export const ItemDesabilitado: Story = {
     </div>
   ),
   play: async ({ step }) => {
-    const body = within(document.body);
     await step("Item disabled tem data-disabled e aria-disabled", async () => {
       await waitForPortal("menu");
       const items = document.querySelectorAll(
-        "[data-slot='dropdown-menu-item']"
+        "[data-slot='dropdown-menu-item']",
       );
       const disabled = Array.from(items).find(
-        (el) => el.hasAttribute("data-disabled") || el.getAttribute("aria-disabled") === "true"
+        (el) =>
+          el.hasAttribute("data-disabled") ||
+          el.getAttribute("aria-disabled") === "true",
       );
       await expect(disabled).toBeTruthy();
     });
