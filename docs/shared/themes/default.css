@@ -1,81 +1,83 @@
 /*
- * ─── Tema: Default ────────────────────────────────────────────────────────────
- * Referência shadcn: style base. Vibe: moderno, compacto, cantos suaves, densidade média-alta.
+ * ─── Tema: Default (Nord) ───────────────────────────────────────────────────
+ * Identidade padrão do design system: paleta Nord (https://www.nordtheme.com).
+ * Frost para marca/interativos, Polar Night/Snow Storm para superfícies, Aurora
+ * para feedback. Cores ajustadas em luminosidade para WCAG 2.1 AA preservando o hue.
  *
  * Radius: base 10px; componentes seguem multiplicadores shadcn:
  *   button: 1×, card: 1.4×, badge: 2.6×, input: 1×, alert: 1×
  *
- * Os valores em :root (tokens.css) refletem Default. Este arquivo RE-DECLARA
+ * Os valores em :root (tokens.css) já refletem Nord. Este arquivo RE-DECLARA
  * os mesmos tokens dentro de `.tema-default` para garantir que, ao voltar de
  * `.tema-warm` ou `.tema-cold` no preview do Storybook, o cascade do CSS reverta
  * corretamente (sem essa re-declaração, browsers podem manter estado computado
  * mesmo após a remoção da classe override).
  *
- * Base Color: Neutral · Theme Color: Neutral · Chart Color: Neutral
+ * Base Color: Nord · Theme Color: Frost · Chart Color: Frost
  */
 .tema-default {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 4%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 4%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 4%;
+  --background: 218 27% 94%; /* nord6 */
+  --foreground: 220 16% 22%; /* nord0 */
+  --card: 218 27% 97%;
+  --card-foreground: 220 16% 22%;
+  --popover: 218 27% 97%;
+  --popover-foreground: 220 16% 22%;
 
-  --primary: 0 0% 9%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 4%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 9%;
+  --primary: 213 38% 42%; /* nord10 (AA) */
+  --primary-foreground: 218 27% 94%;
+  --secondary: 219 28% 88%; /* nord4 */
+  --secondary-foreground: 220 16% 22%;
+  --muted: 218 27% 92%; /* nord5 */
+  --muted-foreground: 220 16% 36%; /* nord3 */
+  --accent: 193 43% 67%; /* nord8 */
+  --accent-foreground: 220 16% 22%;
 
-  --destructive: 0 74% 42%;
+  --destructive: 354 50% 46%; /* nord11 (AA) */
   --destructive-foreground: 0 0% 100%;
-  --success: 142 85% 22%;
+  --success: 92 40% 30%; /* nord14 (AA) */
   --success-foreground: 0 0% 100%;
-  --warning: 45 95% 36%;
+  --warning: 40 80% 32%; /* nord13 (AA) */
   --warning-foreground: 0 0% 100%;
-  --info: 221 83% 43%;
+  --info: 213 38% 42%;
   --info-foreground: 0 0% 100%;
 
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --input-background: 0 0% 100%;
-  --ring: 0 0% 45%;
-  --ring-offset-color: 0 0% 100%;
+  --border: 219 28% 88%; /* nord4 */
+  --input: 219 28% 88%;
+  --input-background: 218 27% 97%;
+  --ring: 213 38% 42%;
+  --ring-offset-color: 218 27% 94%;
 }
 
-/* Dark mode — combina `.dark.tema-default` */
+/* Dark mode — combina `.dark.tema-default` (Polar Night) */
 .dark.tema-default {
-  --background: 0 0% 4%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 6%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 6%;
-  --popover-foreground: 0 0% 98%;
+  --background: 220 16% 22%; /* nord0 */
+  --foreground: 218 27% 94%; /* nord6 */
+  --card: 222 16% 28%; /* nord1 */
+  --card-foreground: 218 27% 94%;
+  --popover: 222 16% 28%;
+  --popover-foreground: 218 27% 94%;
 
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 15%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 0 0% 15%;
-  --accent-foreground: 0 0% 98%;
+  --primary: 193 43% 67%; /* nord8 */
+  --primary-foreground: 220 16% 22%;
+  --secondary: 220 17% 32%; /* nord2 */
+  --secondary-foreground: 218 27% 94%;
+  --muted: 220 17% 32%;
+  --muted-foreground: 219 28% 88%; /* nord4 */
+  --accent: 220 16% 36%; /* nord3 */
+  --accent-foreground: 218 27% 94%;
 
-  --destructive: 0 85% 70%;
-  --destructive-foreground: 0 0% 100%;
-  --success: 142 71% 55%;
-  --success-foreground: 0 0% 0%;
-  --warning: 48 95% 60%;
-  --warning-foreground: 0 0% 0%;
-  --info: 221 83% 53%;
-  --info-foreground: 0 0% 100%;
+  --destructive: 354 55% 62%; /* nord11 clareado */
+  --destructive-foreground: 220 16% 14%;
+  --success: 92 28% 65%; /* nord14 */
+  --success-foreground: 220 16% 14%;
+  --warning: 40 71% 73%; /* nord13 */
+  --warning-foreground: 220 16% 14%;
+  --info: 210 34% 63%; /* nord9 */
+  --info-foreground: 220 16% 14%;
 
-  --border: 0 0% 15%;
-  --input: 0 0% 20%;
-  --input-background: 0 0% 8%;
-  --ring: 0 0% 70%;
-  --ring-offset-color: 0 0% 4%;
+  --border: 220 16% 36%; /* nord3 */
+  --input: 220 16% 36%;
+  --input-background: 220 16% 22%;
+  --ring: 193 43% 67%;
+  --ring-offset-color: 220 16% 22%;
 }

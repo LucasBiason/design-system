@@ -4,7 +4,8 @@
  * Os @import das fontes ficam em tokens.css (carregados uma vez).
  *
  * Aplicado via classe no <html>:
- *   default (sem classe)  — Inter (padrão)
+ *   default (sem classe)  — Open Sans (corpo) + Raleway (titulos) — identidade Nord/portfolio
+ *   .fonte-inter           — Inter (neutra, alta legibilidade)
  *   .fonte-lexend          — Lexend (humanista, ampla, alta legibilidade)
  *   .fonte-pt-serif        — PT Serif (serifada clássica)
  *   .fonte-lxgw-wenkai     — LXGW WenKai TC (manuscrita tradicional chinesa/latina)
@@ -14,17 +15,22 @@
 
 /* Default — re-declara para garantir cascade ao voltar de outra fonte */
 .fonte-default {
-  --font-family-active: 'Inter', sans-serif;
+  --font-family-active: "Open Sans", sans-serif;
+  --font-family-heading: "Raleway", sans-serif;
+}
+
+.fonte-inter {
+  --font-family-active: "Inter", sans-serif;
 }
 
 .fonte-lexend {
-  --font-family-active: 'Lexend', sans-serif;
+  --font-family-active: "Lexend", sans-serif;
 }
 
 .fonte-pt-serif {
-  --font-family-active: 'PT Serif', Georgia, serif;
+  --font-family-active: "PT Serif", Georgia, serif;
 }
 
 .fonte-lxgw-wenkai {
-  --font-family-active: 'LXGW WenKai TC', 'Kaiti', cursive;
+  --font-family-active: "LXGW WenKai TC", "Kaiti", cursive;
 }
