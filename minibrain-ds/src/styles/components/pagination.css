@@ -1,0 +1,115 @@
+/*
+ * ─── mbds-pagination ─────────────────────────────────────────────────────────
+ * Navegação de página numerada com prev/next + chevrons + ellipsis.
+ *
+ * Estrutura:
+ *   <nav class="mbds-pagination" aria-label="Pagination">
+ *     <ul class="mbds-pagination-list">
+ *       <li><a class="mbds-pagination-link mbds-pagination-icon">‹</a></li>
+ *       <li><a class="mbds-pagination-link" aria-current="page">1</a></li>
+ *       <li><a class="mbds-pagination-link">2</a></li>
+ *       <li><span class="mbds-pagination-ellipsis">…</span></li>
+ *       <li><a class="mbds-pagination-link mbds-pagination-icon">›</a></li>
+ *     </ul>
+ *   </nav>
+ *
+ * Tokens: --accent, --accent-foreground, --ring, --radius, --spacing-*
+ */
+
+.mbds-pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+}
+
+/* ── List ────────────────────────────────────────────────────────────────── */
+.mbds-pagination-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-1);                        /* 4px */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mbds-pagination-list > li {
+  list-style: none;
+}
+
+/* ── Link (item numérico) ────────────────────────────────────────────────── */
+.mbds-pagination-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+
+  height: var(--spacing-9, 2.25rem);            /* 36px */
+  padding-inline: var(--spacing-4);             /* 16px */
+  padding-block: var(--spacing-2);              /* 8px */
+
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius, 0.5rem);
+  font-family: inherit;
+  font-size: 0.875rem;                          /* 14px */
+  font-weight: var(--font-weight-medium, 500);
+  color: hsl(var(--foreground));
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.mbds-pagination-link:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.mbds-pagination-link:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.5);
+}
+
+/* Página atual — não navegável */
+.mbds-pagination-link[aria-current="page"] {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  pointer-events: none;
+}
+
+/* Variante icon (prev/next chevrons) — quadrado */
+.mbds-pagination-link.mbds-pagination-icon {
+  width: var(--spacing-9, 2.25rem);             /* 36×36 */
+  padding-inline: 0;
+}
+
+.mbds-pagination-link.mbds-pagination-icon > svg {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+/* Estado desabilitado (prev em página 1, next em última) */
+.mbds-pagination-link[aria-disabled="true"],
+.mbds-pagination-link.is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ── Ellipsis (…) ────────────────────────────────────────────────────────── */
+.mbds-pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-9, 2.25rem);
+  height: var(--spacing-9, 2.25rem);
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbds-pagination-link {
+    transition: none;
+  }
+}

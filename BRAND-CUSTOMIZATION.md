@@ -28,7 +28,7 @@ Mantenha esses valores à mão — eles aparecem em vários arquivos.
 
 **Arquivo**: [`docs/shared/tokens/tokens.css`](docs/shared/tokens/tokens.css)
 
-Este arquivo é a **fonte de verdade** consumida pelas 4 stacks. Editar aqui propaga pra React, Vue, Svelte e Nortear simultaneamente.
+Este arquivo é a **fonte de verdade** consumida pelas 4 stacks. Editar aqui propaga pra React, Vue, Svelte e MiniBrain simultaneamente.
 
 Variáveis principais a customizar (procure os blocos `:root { ... }` e `.dark { ... }`):
 
@@ -77,7 +77,7 @@ A fonte do Google Fonts é carregada em:
 | React | [`design-system-react/src/styles/globals.css`](design-system-react/src/styles/globals.css) (linha 6, `@import url('...fonts.googleapis.com/...')`) |
 | Vue | [`design-system-vue/src/styles/globals.css`](design-system-vue/src/styles/globals.css) |
 | Svelte | [`design-system-svelte/src/styles/globals.css`](design-system-svelte/src/styles/globals.css) |
-| Nortear | [`nortear-design-system/index.html`](nortear-design-system/index.html) + [`nortear-design-system/.storybook/preview-head.html`](nortear-design-system/.storybook/preview-head.html) (via `<link>`) |
+| MiniBrain | [`minibrain-ds/index.html`](minibrain-ds/index.html) + [`minibrain-ds/.storybook/preview-head.html`](minibrain-ds/.storybook/preview-head.html) (via `<link>`) |
 
 **Substitua** o URL do `@import` / `<link>` pela sua família. Exemplo trocando Inter por Geist:
 
@@ -101,7 +101,7 @@ Depois atualize a variável CSS:
 
 **Arquivo**: `<stack>/.storybook/brand-logo.svg` em cada stack
 
-Substitua o SVG do Nortear pelo seu logo. Recomendado:
+Substitua o SVG do MiniBrain pelo seu logo. Recomendado:
 - Formato SVG inline (texto/path, não bitmap embedado)
 - Altura ~32px
 - `currentColor` no fill/stroke pra adaptar a temas dark/light
@@ -112,7 +112,7 @@ Aplicar em todas as 4 stacks:
 cp meu-logo.svg design-system-react/.storybook/brand-logo.svg
 cp meu-logo.svg design-system-vue/.storybook/brand-logo.svg
 cp meu-logo.svg design-system-svelte/.storybook/brand-logo.svg
-cp meu-logo.svg nortear-design-system/.storybook/brand-logo.svg
+cp meu-logo.svg minibrain-ds/.storybook/brand-logo.svg
 ```
 
 ---
@@ -140,7 +140,7 @@ export default create({
 });
 ```
 
-Aplicar em **react/vue/svelte/nortear**.
+Aplicar em **react/vue/svelte/minibrain**.
 
 ---
 
@@ -163,21 +163,21 @@ Depois atualize o `LanguageSwitcher` em cada stack:
 
 ## Etapa 8 — README, LICENSE e nome do projeto
 
-Substitua todas as ocorrências de "Nortear" pelo nome da sua marca:
+Substitua todas as ocorrências de "MiniBrain" pelo nome da sua marca:
 
 ```bash
 # Em cada package.json
-sed -i 's/nortear-design-system/acme-design-system/g' nortear-design-system/package.json
+sed -i 's/minibrain-ds/acme-design-system/g' minibrain-ds/package.json
 sed -i 's/"name": "design-system-react"/"name": "acme-react"/g' design-system-react/package.json
-# (idem vue, svelte, nortear)
+# (idem vue, svelte, minibrain)
 
 # README principal
-sed -i 's/Nortear/Acme/g' README.md
-sed -i 's/norteardesign.com.br/acme.design/g' README.md
+sed -i 's/MiniBrain/Acme/g' README.md
+sed -i 's/minibraindesign.com.br/acme.design/g' README.md
 
 # Landing page
-sed -i 's/Nortear/Acme/g' landing/index.html
-sed -i 's/norteardesign.com.br/acme.design/g' landing/index.html
+sed -i 's/MiniBrain/Acme/g' landing/index.html
+sed -i 's/minibraindesign.com.br/acme.design/g' landing/index.html
 ```
 
 **Importante**: revise os diffs antes de commitar — `sed` é cego e pode pegar ocorrências legítimas que você queria manter.
@@ -195,7 +195,7 @@ Depois, no painel do Vercel:
    - `design-system-react/`
    - `design-system-vue/`
    - `design-system-svelte/`
-   - `nortear-design-system/` (renomeie se quiser)
+   - `minibrain-ds/` (renomeie se quiser)
 3. Em **Settings → Domains** de cada projeto, adicione o subdomínio próprio (ex: `react.acme.design`)
 4. Configure DNS no seu registrador com os CNAMEs específicos que cada projeto Vercel mostrar
 
@@ -208,10 +208,10 @@ Veja a seção "Deploy" do [`README.md`](README.md) pra topologia completa.
 Se você quer que outras pessoas possam instalar seus componentes via `npx`:
 
 ```bash
-cd nortear-cli
+cd minibrain-ds-cli
 ```
 
-Edite [`nortear-cli/package.json`](nortear-cli/package.json):
+Edite [`minibrain-ds-cli/package.json`](minibrain-ds-cli/package.json):
 
 ```json
 {
@@ -223,7 +223,7 @@ Edite [`nortear-cli/package.json`](nortear-cli/package.json):
 }
 ```
 
-Renomeie referências no código (`bin/cli.js`, `src/`) de `nortear` → `acme`.
+Renomeie referências no código (`bin/cli.js`, `src/`) de `minibrain` → `acme`.
 
 Publique:
 
@@ -247,7 +247,7 @@ npx acme@latest add button card alert
 - [ ] Logo SVG atualizado nas 4 stacks
 - [ ] Tipografia carregando corretamente (sem fallback em system-ui)
 - [ ] `brandTitle` em todos os `manager.ts` aponta pra sua marca
-- [ ] README e landing page sem menções residuais a "Nortear"
+- [ ] README e landing page sem menções residuais a "MiniBrain"
 - [ ] `npm run storybook` roda em todas as 4 stacks sem erro
 - [ ] `npm run build-storybook` builda com sucesso em todas as 4 stacks
 - [ ] `npm run test-storybook` passa (ou você documentou as falhas remanescentes em `patches.md`)

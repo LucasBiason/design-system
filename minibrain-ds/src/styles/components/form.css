@@ -1,0 +1,64 @@
+/*
+ * ─── mbds-form ───────────────────────────────────────────────────────────────
+ * Helpers de formulário: field (label + input + description + error) e
+ * fieldset (legend + children).
+ *
+ *   <div class="mbds-form-field">
+ *     <label class="mbds-form-label">Email</label>
+ *     <input class="mbds-input" type="email" />
+ *     <p class="mbds-form-description">Não compartilharemos.</p>
+ *     <p class="mbds-form-error" aria-live="polite">Email inválido</p>
+ *   </div>
+ *
+ *   <fieldset class="mbds-form-fieldset">
+ *     <legend class="mbds-form-legend">Endereço</legend>
+ *     [.mbds-form-field × N]
+ *   </fieldset>
+ *
+ * Tokens: --foreground, --muted-foreground, --destructive, --spacing-*
+ */
+
+.mbds-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1-5, 0.375rem);              /* 6px */
+}
+
+.mbds-form-label {
+  font-family: inherit;
+  font-size: 0.875rem;                            /* 14px */
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 1;
+  color: hsl(var(--foreground));
+}
+
+.mbds-form-description {
+  margin: 0;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.mbds-form-error {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium, 500);
+  color: hsl(var(--destructive));
+}
+
+/* ── Fieldset ────────────────────────────────────────────────────────────── */
+.mbds-form-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);                          /* 16px entre fields */
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.mbds-form-legend {
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 1;
+  color: hsl(var(--foreground));
+}

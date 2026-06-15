@@ -77,7 +77,7 @@ const ColorGroup = ({ title, subtitle, colors, copyLabel }: { title: string, sub
 export function ThemeColorsDocs() {
   const { t } = useTranslation(colorsTranslations);
 
-  const nortearColors = [
+  const minibrainColors = [
     { name: "Primary", variable: "--primary", hex: "#171717" },
     { name: "Secondary", variable: "--secondary", hex: "#f5f5f5" },
     { name: "Muted", variable: "--muted", hex: "#f5f5f5" },
@@ -102,7 +102,7 @@ export function ThemeColorsDocs() {
 
   const navItems = [
     { id: "introducao", label: t("title") },
-    { id: "nortear", label: t("nortear.title") },
+    { id: "minibrain", label: t("minibrain.title") },
     { id: "crystal", label: t("crystal.title") },
     { id: "industrial", label: t("industrial.title") },
   ];
@@ -134,16 +134,16 @@ export function ThemeColorsDocs() {
           {/* --- Conteúdo Principal --- */}
           <div className="flex-1 min-w-0 space-y-20">
             
-            {/* Tema Nortear */}
-            <section id="nortear" className="space-y-8">
+            {/* Tema MiniBrain */}
+            <section id="minibrain" className="space-y-8">
               <div className="flex items-center gap-2 text-xl font-semibold border-b pb-2">
                 <Paintbrush className="size-5 text-primary" />
-                <h2>{t("nortear.title")}</h2>
+                <h2>{t("minibrain.title")}</h2>
               </div>
               <ColorGroup 
-                title={t("nortear.title")} 
-                subtitle={t("nortear.subtitle")}
-                colors={nortearColors} 
+                title={t("minibrain.title")} 
+                subtitle={t("minibrain.subtitle")}
+                colors={minibrainColors} 
                 copyLabel={t("copy")}
               />
             </section>

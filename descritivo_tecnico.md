@@ -1,6 +1,6 @@
-# Descritivo Técnico: Nortear Design System
+# Descritivo Técnico: MiniBrain Design System
 
-Este documento apresenta uma visão técnica e detalhada do **Nortear Design System**, um ecossistema de componentes e diretrizes projetado para ser *multi-tenant* e suportar múltiplas stacks de frontend, garantindo consistência visual e comportamental em toda a plataforma.
+Este documento apresenta uma visão técnica e detalhada do **MiniBrain Design System**, um ecossistema de componentes e diretrizes projetado para ser *multi-tenant* e suportar múltiplas stacks de frontend, garantindo consistência visual e comportamental em toda a plataforma.
 
 ## 1. Visão Geral da Arquitetura
 
@@ -10,7 +10,7 @@ A estrutura principal divide-se em:
 - `design-system-react/`
 - `design-system-vue/`
 - `design-system-svelte/`
-- `nortear-design-system/` (Vanilla JS/CSS)
+- `minibrain-ds/` (Vanilla JS/CSS)
 - `docs/shared/` (Documentação unificada, tokens, temas e guidelines)
 
 ## 2. Tecnologias e Ferramentas Base
@@ -23,7 +23,7 @@ Cada pacote é otimizado para o seu ecossistema, mas compartilha um núcleo ferr
 - **TypeScript**: Padrão adotado em todas as stacks para tipagem estática.
 
 ### Componentes Base (Headless & Primitives)
-O Nortear não reconstrói primitivas de UI do zero. Ele se apoia no ecossistema do **shadcn/ui** e seus ports oficiais para garantir acessibilidade e comportamento padrão da web, aplicando os tokens visuais por cima:
+O MiniBrain não reconstrói primitivas de UI do zero. Ele se apoia no ecossistema do **shadcn/ui** e seus ports oficiais para garantir acessibilidade e comportamento padrão da web, aplicando os tokens visuais por cima:
 - **React**: Utiliza `@base-ui/react` (via registry *base-nova* do shadcn).
 - **Vue**: Utiliza `reka-ui` (via *reka-nova*).
 - **Svelte**: Utiliza `bits-ui` (via *nova*).

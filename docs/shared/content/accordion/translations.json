@@ -362,7 +362,7 @@
         }
       },
       "customizationTitle": "Customização via tokens",
-      "customizationCode": "/* Aumentar separador entre itens */\n.my-accordion .nds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger com background em hover */\n.my-accordion .nds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
+      "customizationCode": "/* Aumentar separador entre itens */\n.my-accordion .mbds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger com background em hover */\n.my-accordion .mbds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
     },
     "doDont": {
       "pair1": {
@@ -923,7 +923,7 @@
         }
       },
       "customizationTitle": "Customization via tokens",
-      "customizationCode": "/* Increase separator between items */\n.my-accordion .nds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger with background on hover */\n.my-accordion .nds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
+      "customizationCode": "/* Increase separator between items */\n.my-accordion .mbds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger with background on hover */\n.my-accordion .mbds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
     },
     "doDont": {
       "pair1": {
@@ -1484,7 +1484,7 @@
         }
       },
       "customizationTitle": "Personalización via tokens",
-      "customizationCode": "/* Aumentar separador entre ítems */\n.my-accordion .nds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger con fondo en hover */\n.my-accordion .nds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
+      "customizationCode": "/* Aumentar separador entre ítems */\n.my-accordion .mbds-accordion-item {\n  border-bottom-width: 2px;\n  border-color: hsl(var(--border) / 60%);\n}\n\n/* Trigger con fondo en hover */\n.my-accordion .mbds-accordion-trigger:hover {\n  background-color: hsl(var(--muted) / 0.4);\n  border-radius: 0.375rem;\n}"
     },
     "doDont": {
       "pair1": {

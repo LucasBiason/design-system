@@ -1,0 +1,12 @@
+/*
+ * ─── mbds-docs-demo ────────────────────────────────────────────────────────────
+ * Card wrapper para demonstrações dentro das docs pages.
+ * Estende .mbds-card adicionando alinhamento centralizado e margin-top
+ * consistente com o ritmo vertical das seções.
+ */
+
+.mbds-docs-demo {
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-2);                   /* 8px — espaçamento da seção anterior */
+}

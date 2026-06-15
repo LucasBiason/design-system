@@ -1,0 +1,86 @@
+/*
+ * ─── Semantic color utilities ────────────────────────────────────────────────
+ * Classes que consomem tokens semânticos (--foreground, --primary, --success…).
+ * Acompanham automaticamente trocas de tema (default/warm/cold) e dark mode.
+ *
+ * NUNCA use cores Tailwind hardcoded (green-600, red-500/15, etc.) na docs page
+ * ou no projeto — elas ignoram o tema ativo. Use os tokens semânticos:
+ *   --primary, --secondary, --accent, --destructive, --success, --warning, --info,
+ *   --background, --foreground, --card, --muted, --border, --ring
+ *
+ * Convenção: .mbds-text-<token>    (foreground color)
+ *            .mbds-bg-<token>      (background color)
+ *            .mbds-bg-<token>-soft (background com opacidade reduzida — soft variant)
+ *            .mbds-border-<token>  (border color)
+ *
+ * Modificador /N (ex.: --text-primary com opacidade) usa custom property na
+ * própria classe — preferimos classes nomeadas para os usos comuns.
+ */
+
+/* ── Foreground colors ─────────────────────────────────────────────────────── */
+.mbds-text-foreground       { color: hsl(var(--foreground)); }
+.mbds-text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.mbds-text-primary          { color: hsl(var(--primary)); }
+.mbds-text-primary-foreground { color: hsl(var(--primary-foreground)); }
+.mbds-text-secondary        { color: hsl(var(--secondary)); }
+.mbds-text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+.mbds-text-accent           { color: hsl(var(--accent)); }
+.mbds-text-accent-foreground { color: hsl(var(--accent-foreground)); }
+.mbds-text-destructive      { color: hsl(var(--destructive)); }
+.mbds-text-success          { color: hsl(var(--success)); }
+.mbds-text-warning          { color: hsl(var(--warning)); }
+.mbds-text-info             { color: hsl(var(--info)); }
+.mbds-text-card-foreground  { color: hsl(var(--card-foreground)); }
+.mbds-text-inherit          { color: inherit; }
+
+/* ── Background colors (full) ──────────────────────────────────────────────── */
+.mbds-bg-background    { background-color: hsl(var(--background)); }
+.mbds-bg-card          { background-color: hsl(var(--card)); }
+.mbds-bg-muted         { background-color: hsl(var(--muted)); }
+.mbds-bg-primary       { background-color: hsl(var(--primary)); }
+.mbds-bg-secondary     { background-color: hsl(var(--secondary)); }
+.mbds-bg-accent        { background-color: hsl(var(--accent)); }
+.mbds-bg-destructive   { background-color: hsl(var(--destructive)); }
+.mbds-bg-success       { background-color: hsl(var(--success)); }
+.mbds-bg-warning       { background-color: hsl(var(--warning)); }
+.mbds-bg-info          { background-color: hsl(var(--info)); }
+.mbds-bg-transparent   { background-color: transparent; }
+
+/* ── Background colors (soft — 10–15% opacity) ─────────────────────────────── */
+.mbds-bg-primary-soft     { background-color: hsl(var(--primary) / 0.1); }
+.mbds-bg-destructive-soft { background-color: hsl(var(--destructive) / 0.1); }
+.mbds-bg-success-soft     { background-color: hsl(var(--success) / 0.1); }
+.mbds-bg-warning-soft     { background-color: hsl(var(--warning) / 0.1); }
+.mbds-bg-info-soft        { background-color: hsl(var(--info) / 0.1); }
+.mbds-bg-muted-soft       { background-color: hsl(var(--muted) / 0.5); }
+.mbds-bg-accent-soft      { background-color: hsl(var(--accent) / 0.5); }
+
+/* ── Border colors ─────────────────────────────────────────────────────────── */
+.mbds-border-default     { border: 1px solid hsl(var(--border)); }
+.mbds-border-soft        { border: 1px solid hsl(var(--border) / 0.5); }
+.mbds-border-primary     { border: 1px solid hsl(var(--primary)); }
+.mbds-border-primary-soft { border: 1px solid hsl(var(--primary) / 0.2); }
+.mbds-border-success     { border: 1px solid hsl(var(--success)); }
+.mbds-border-success-soft { border: 1px solid hsl(var(--success) / 0.3); }
+.mbds-border-destructive { border: 1px solid hsl(var(--destructive)); }
+.mbds-border-destructive-soft { border: 1px solid hsl(var(--destructive) / 0.3); }
+.mbds-border-info-soft    { border: 1px solid hsl(var(--info) / 0.3); }
+.mbds-border-warning-soft { border: 1px solid hsl(var(--warning) / 0.3); }
+.mbds-border-none        { border: 0; }
+
+/* Border-bottom isolado (divisor inferior) */
+.mbds-border-b           { border-bottom: 1px solid hsl(var(--border)); }
+.mbds-border-b-soft      { border-bottom: 1px solid hsl(var(--border) / 0.5); }
+
+/* ── Hover variants (apenas as mais usadas) ────────────────────────────────── */
+.mbds-hover-bg-muted-faint:hover { background-color: hsl(var(--muted) / 0.05); }  /* zebra suave de table-row */
+.mbds-hover-bg-muted-soft:hover  { background-color: hsl(var(--muted) / 0.5); }
+.mbds-hover-bg-accent:hover      { background-color: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+.mbds-hover-underline:hover      { text-decoration: underline; }
+.mbds-hover-text-foreground:hover { color: hsl(var(--foreground)); }
+
+/* ── Shadow tokens ─────────────────────────────────────────────────────────── */
+.mbds-shadow-none { box-shadow: none; }
+.mbds-shadow-sm   { box-shadow: var(--elevation-sm); }
+.mbds-shadow-md   { box-shadow: var(--elevation-md); }
+.mbds-shadow-lg   { box-shadow: var(--elevation-lg); }

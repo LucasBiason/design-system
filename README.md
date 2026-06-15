@@ -1,4 +1,4 @@
-# Nortear Design System
+# MiniBrain Design System
 
 Um design system multi-stack production-ready com **4 implementações sincronizadas** (React, Vue, Svelte e Vanilla TS), 50+ componentes acessíveis, sistema de tokens compartilhado e documentação trilíngue (pt-BR / en / es).
 
@@ -7,7 +7,7 @@ Um design system multi-stack production-ready com **4 implementações sincroniz
 │  React 19 + @base-ui/react  ◇  port 6006                    │
 │  Vue 3   + reka-ui          ◇  port 6007                    │
 │  Svelte 5 + bits-ui         ◇  port 6008                    │
-│  Vanilla TS (Nortear)       ◇  port 6009                    │
+│  Vanilla TS (MiniBrain)       ◇  port 6009                    │
 └─────────────────────────────────────────────────────────────┘
         ↑          ↑           ↑          ↑          ↑
    tokens.css  themes/   translations.json  guidelines  axe + WCAG 2.1 AA
@@ -16,7 +16,7 @@ Um design system multi-stack production-ready com **4 implementações sincroniz
 
 ## Por que existir
 
-Quando uma equipe ou produto precisa entregar a mesma marca em **mais de uma stack** (React + Vue, ou Svelte + Vanilla pra um landing), normalmente cada time mantém seu próprio fork — divergindo em comportamento, tokens, a11y. O Nortear elimina esse drift mantendo:
+Quando uma equipe ou produto precisa entregar a mesma marca em **mais de uma stack** (React + Vue, ou Svelte + Vanilla pra um landing), normalmente cada time mantém seu próprio fork — divergindo em comportamento, tokens, a11y. O MiniBrain elimina esse drift mantendo:
 
 - **Tokens CSS compartilhados** em `docs/shared/tokens/` consumidos pelos 4 stacks
 - **Temas** (Default + Densidades + Fontes) em `docs/shared/themes/` aplicáveis cross-stack
@@ -31,7 +31,7 @@ Quando uma equipe ou produto precisa entregar a mesma marca em **mais de uma sta
 | **React** | `design-system-react/` | 6006 | `@base-ui/react` + Tailwind 4 | `npm run dev:react` |
 | **Vue** | `design-system-vue/` | 6007 | `reka-ui` + Tailwind 4 | `npm run dev:vue` |
 | **Svelte** | `design-system-svelte/` | 6008 | `bits-ui` + Tailwind 4 (Svelte 5 runes) | `npm run dev:svelte` |
-| **Nortear** | `nortear-design-system/` | 6009 | Vanilla TS + factories + CSS standalone (`.nds-*`) — **zero CSS framework** | `npm run dev:vanilla` |
+| **MiniBrain** | `minibrain-ds/` | 6009 | Vanilla TS + factories + CSS standalone (`.mbds-*`) — **zero CSS framework** | `npm run dev:vanilla` |
 
 ## Componentes
 
@@ -97,11 +97,11 @@ Depois, customize seguindo o **[`BRAND-CUSTOMIZATION.md`](BRAND-CUSTOMIZATION.md
 10. Checklist final antes do primeiro release
 
 Storybooks ao vivo do template original:
-- **React** → [react.norteardesign.com.br](https://react.norteardesign.com.br)
-- **Vue** → [vue.norteardesign.com.br](https://vue.norteardesign.com.br)
-- **Svelte** → [svelte.norteardesign.com.br](https://svelte.norteardesign.com.br)
-- **Vanilla** → [vanilla.norteardesign.com.br](https://vanilla.norteardesign.com.br)
-- **Portal** → [norteardesign.com.br](https://norteardesign.com.br)
+- **React** → [react.minibraindesign.com.br](https://react.minibraindesign.com.br)
+- **Vue** → [vue.minibraindesign.com.br](https://vue.minibraindesign.com.br)
+- **Svelte** → [svelte.minibraindesign.com.br](https://svelte.minibraindesign.com.br)
+- **Vanilla** → [vanilla.minibraindesign.com.br](https://vanilla.minibraindesign.com.br)
+- **Portal** → [minibraindesign.com.br](https://minibraindesign.com.br)
 
 ## Quick Start
 
@@ -117,7 +117,7 @@ cd design-system
 cd design-system-react && npm install
 cd ../design-system-vue && npm install
 cd ../design-system-svelte && npm install
-cd ../nortear-design-system && npm install
+cd ../minibrain-ds && npm install
 ```
 
 ### Rodar Storybook (qualquer stack)
@@ -129,22 +129,22 @@ npm run storybook:svelte     # http://localhost:6008
 npm run storybook:vanilla    # http://localhost:6009
 ```
 
-## Nortear CLI (Vanilla TS)
+## MiniBrain CLI (Vanilla TS)
 
-Pra puxar componentes do Nortear num projeto vanilla, estilo shadcn:
+Pra puxar componentes do MiniBrain num projeto vanilla, estilo shadcn:
 
 ```bash
-npx nortear@latest init
-npx nortear@latest add button card alert
+npx minibrain@latest init
+npx minibrain@latest add button card alert
 ```
 
-Veja [`nortear-cli/README.md`](nortear-cli/README.md).
+Veja [`minibrain-ds-cli/README.md`](minibrain-ds-cli/README.md).
 
 ## Qualidade
 
 | Stack | test-storybook pass rate | Status |
 |---|---:|:---:|
-| Nortear | **100%** (527/527) | ✅ |
+| MiniBrain | **100%** (527/527) | ✅ |
 | Vue | 87% (467/534) | 🟢 |
 | React | 85% (461/543) | 🟢 |
 | Svelte | 79% (426/540) | 🟡 |
@@ -171,9 +171,9 @@ design-system/
 ├── design-system-react/            # ⚛️  React 19 + @base-ui
 ├── design-system-vue/              # 💚 Vue 3 + reka-ui
 ├── design-system-svelte/           # 🧡 Svelte 5 + bits-ui
-├── nortear-design-system/          # 🌿 Vanilla TS + .nds-* CSS standalone
+├── minibrain-ds/          # 🌿 Vanilla TS + .mbds-* CSS standalone
 │
-├── nortear-cli/                    # CLI tipo shadcn pra Nortear vanilla
+├── minibrain-ds-cli/                    # CLI tipo shadcn pra MiniBrain vanilla
 ├── patches.md                      # registry de patches upstream + tokens
 ├── scripts/                        # validate-docs-consistency, list-patches, etc.
 └── registry/                       # metadata pro CLI (componentes disponíveis)
@@ -183,7 +183,7 @@ design-system/
 
 1. **Wrapper-first** — modificações de primitivas upstream (base-ui/reka/bits) ficam em wrappers antes de patches diretos. Quando o patch é estrutural, é versionado via `patch-package` + documentado em `patches.md`.
 2. **Conteúdo cross-stack API-neutro** — `translations.json` usa termos conceituais ("modo único", "callback de mudança"), nunca props literais. Snippets de código stack-específicos ficam em chaves com sufixo `Code`.
-3. **Tokens não-Tailwind no Nortear** — Nortear vanilla TS usa classes `.nds-*` standalone, sem framework CSS. As outras 3 stacks usam Tailwind 4.
+3. **Tokens não-Tailwind no MiniBrain** — MiniBrain vanilla TS usa classes `.mbds-*` standalone, sem framework CSS. As outras 3 stacks usam Tailwind 4.
 4. **Zero skip de teste** — política rígida: bugs do primitivo são corrigidos; nunca usar `it.skip`/`a11y.disable`/`expect.soft`. Configurações de ferramenta axe (suprimir regras de falso-positivo conhecido) são aceitáveis e documentadas.
 
 ## Patches upstream ativos
@@ -200,13 +200,13 @@ Cada um dos 5 projetos (1 portal + 4 storybooks) tem seu próprio `vercel.json` 
 
 | Projeto Vercel | Diretório raiz no repo | Subdomínio | Build |
 |---|---|---|---|
-| `nortear-portal` | `landing/` | `norteardesign.com.br` + `www.` | (estático) |
-| `nortear-react` | `design-system-react/` | `react.norteardesign.com.br` | `npm run build-storybook` |
-| `nortear-vue` | `design-system-vue/` | `vue.norteardesign.com.br` | `npm run build-storybook` |
-| `nortear-svelte` | `design-system-svelte/` | `svelte.norteardesign.com.br` | `npm run build-storybook` |
-| `nortear-vanilla` | `nortear-design-system/` | `vanilla.norteardesign.com.br` | `npm run build-storybook` |
+| `minibrain-portal` | `landing/` | `minibraindesign.com.br` + `www.` | (estático) |
+| `minibrain-react` | `design-system-react/` | `react.minibraindesign.com.br` | `npm run build-storybook` |
+| `minibrain-vue` | `design-system-vue/` | `vue.minibraindesign.com.br` | `npm run build-storybook` |
+| `minibrain-svelte` | `design-system-svelte/` | `svelte.minibraindesign.com.br` | `npm run build-storybook` |
+| `minibrain-vanilla` | `minibrain-ds/` | `vanilla.minibraindesign.com.br` | `npm run build-storybook` |
 
-### DNS records pra norteardesign.com.br
+### DNS records pra minibraindesign.com.br
 
 Configurar no painel do seu registrador:
 
@@ -235,7 +235,7 @@ Pra cada um dos 5 projetos:
 
 ## Roadmap
 
-- [ ] Publish Nortear CLI no npm
+- [ ] Publish MiniBrain CLI no npm
 - [ ] Deploy Storybooks em domínios próprios (Vercel/Chromatic)
 - [ ] Atingir 100% test-storybook em Vue/React/Svelte (87% / 85% / 79% atualmente)
 - [ ] Adicionar tema escuro custom (atualmente segue prefers-color-scheme)

@@ -10,15 +10,15 @@
     "dev:react":    "npm run dev --prefix design-system-react",
     "dev:vue":      "npm run dev --prefix design-system-vue",
     "dev:svelte":   "npm run dev --prefix design-system-svelte",
-    "dev:vanilla":  "npm run dev --prefix nortear-design-system",
+    "dev:vanilla":  "npm run dev --prefix minibrain-ds",
     "storybook:react":   "npm run storybook --prefix design-system-react",
     "storybook:vue":     "npm run storybook --prefix design-system-vue",
     "storybook:svelte":  "npm run storybook --prefix design-system-svelte",
-    "storybook:vanilla": "npm run storybook --prefix nortear-design-system",
+    "storybook:vanilla": "npm run storybook --prefix minibrain-ds",
     "chromatic:react":   "npm run chromatic --prefix design-system-react",
     "chromatic:vue":     "npm run chromatic --prefix design-system-vue",
     "chromatic:svelte":  "npm run chromatic --prefix design-system-svelte",
-    "chromatic:vanilla": "npm run chromatic --prefix nortear-design-system",
+    "chromatic:vanilla": "npm run chromatic --prefix minibrain-ds",
     "chromatic:all":     "npm run chromatic:react && npm run chromatic:vue && npm run chromatic:svelte && npm run chromatic:vanilla"
   },
   "devDependencies": {

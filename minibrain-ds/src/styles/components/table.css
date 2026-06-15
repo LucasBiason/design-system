@@ -1,0 +1,90 @@
+/*
+ * ─── mbds-table ──────────────────────────────────────────────────────────────
+ * Tabela de dados acessível.
+ *
+ *   <div class="mbds-table-wrapper">
+ *     <table class="mbds-table">
+ *       <thead>
+ *         <tr>
+ *           <th>Coluna</th>
+ *         </tr>
+ *       </thead>
+ *       <tbody>
+ *         <tr>
+ *           <td>Valor</td>
+ *         </tr>
+ *       </tbody>
+ *     </table>
+ *   </div>
+ *
+ * Tokens: --foreground, --muted-foreground, --muted, --border, --spacing-*
+ */
+
+.mbds-table-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mbds-table {
+  width: 100%;
+  caption-side: bottom;
+  border-collapse: collapse;
+  font-family: inherit;
+  font-size: 0.875rem;                            /* 14px */
+}
+
+/* Caption — alinha legenda da tabela */
+.mbds-table > caption {
+  margin-top: var(--spacing-4);                   /* 16px */
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+/* ── Linhas ──────────────────────────────────────────────────────────────── */
+.mbds-table thead tr,
+.mbds-table tbody tr,
+.mbds-table tfoot tr {
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.mbds-table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.mbds-table tbody tr:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.mbds-table tbody tr[data-state="selected"] {
+  background-color: hsl(var(--muted));
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.mbds-table th {
+  height: var(--spacing-10, 2.5rem);              /* 40px */
+  padding-inline: var(--spacing-2);               /* 8px */
+  text-align: left;
+  vertical-align: middle;
+  font-weight: var(--font-weight-medium, 500);
+  color: hsl(var(--muted-foreground));
+  white-space: normal;
+}
+
+/* ── Cells ───────────────────────────────────────────────────────────────── */
+.mbds-table td {
+  padding: var(--spacing-2);                       /* 8px */
+  vertical-align: middle;
+  white-space: normal;
+  color: hsl(var(--foreground));
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.mbds-table tfoot tr {
+  background-color: hsl(var(--muted) / 0.5);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.mbds-table tfoot tr:last-child {
+  border-bottom: 0;
+}

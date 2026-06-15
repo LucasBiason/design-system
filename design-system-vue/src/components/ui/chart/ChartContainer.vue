@@ -26,7 +26,7 @@ const props = defineProps<{
   renderer?: 'svg' | 'canvas';
 }>();
 
-const themeName = 'nortear';
+const themeName = 'minibrain';
 const themeKey = ref(0);
 
 function hsl(token: string, alpha = 1): string {

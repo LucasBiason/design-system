@@ -1,0 +1,27 @@
+/*
+ * ─── mbds-separator ──────────────────────────────────────────────────────────
+ * Linha divisória horizontal ou vertical de 1px.
+ *
+ *   <div class="mbds-separator" data-orientation="horizontal" role="none"></div>
+ *   <div class="mbds-separator" data-orientation="vertical"   role="separator"></div>
+ *
+ * Decorativo por default (role="none" + aria-hidden). Para uso semântico,
+ * usar role="separator" + aria-orientation.
+ *
+ * Tokens: --border
+ */
+
+.mbds-separator {
+  flex-shrink: 0;
+  background-color: hsl(var(--border));
+}
+
+.mbds-separator[data-orientation="horizontal"] {
+  width: 100%;
+  height: 1px;
+}
+
+.mbds-separator[data-orientation="vertical"] {
+  width: 1px;
+  height: 100%;
+}

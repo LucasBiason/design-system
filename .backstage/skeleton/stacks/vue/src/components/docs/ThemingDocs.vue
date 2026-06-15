@@ -8,7 +8,7 @@ onMounted(() => {
   const meta = document.querySelector('meta[name="description"]')
   if (meta) meta.setAttribute('content', `Documentação do componente Theming para Vue 3 com Shadcn/UI e Tailwind CSS.`)
 })
-onUnmounted(() => { document.title = 'Design System — Nortear (Vue)' })
+onUnmounted(() => { document.title = 'Design System — MiniBrain (Vue)' })
 
 const sections = [
   { id: 'demonstracao',   label: 'Demonstração',  block: 1 },

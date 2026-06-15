@@ -29,7 +29,7 @@ onMounted(() => {
   if (meta) meta.setAttribute('content', 'Documentação do componente [Componente]...')
 })
 onUnmounted(() => {
-  document.title = 'Design System — Nortear (Vue)'
+  document.title = 'Design System — MiniBrain (Vue)'
 })
 
 const sections = [

@@ -1,0 +1,41 @@
+/*
+ * ─── mbds-toggle-group ───────────────────────────────────────────────────────
+ * Grupo de toggles (single ou multiple). Variante outline emenda os toggles
+ * em um único container com borda compartilhada.
+ *
+ *   <div class="mbds-toggle-group" role="group" data-variant="default|outline">
+ *     <button class="mbds-toggle" …>B</button>
+ *     <button class="mbds-toggle" …>I</button>
+ *     <button class="mbds-toggle" …>U</button>
+ *   </div>
+ *
+ * Tokens: --input, --border, --radius
+ */
+
+.mbds-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);                          /* 4px entre toggles */
+}
+
+/* ── Variante outline (toggles emendados num único container) ────────────── */
+.mbds-toggle-group[data-variant="outline"] {
+  gap: 0;
+  border: 1px solid hsl(var(--input, var(--border)));
+  border-radius: var(--radius, 0.5rem);
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.05);
+  overflow: hidden;
+}
+
+/* Toggles internos do outline group perdem a borda própria */
+.mbds-toggle-group[data-variant="outline"] > .mbds-toggle {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Divisor entre toggles do outline group */
+.mbds-toggle-group[data-variant="outline"] > .mbds-toggle + .mbds-toggle {
+  border-left: 1px solid hsl(var(--input, var(--border)));
+}

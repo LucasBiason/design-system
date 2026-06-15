@@ -1,0 +1,159 @@
+/*
+ * ─── mbds-calendar ───────────────────────────────────────────────────────────
+ * Date picker visual com grid mensal navegável.
+ *
+ *   <div class="mbds-calendar">
+ *     <div class="mbds-calendar-nav">
+ *       <button class="mbds-calendar-nav-button">‹</button>
+ *       <div class="mbds-calendar-month-label">Janeiro 2026</div>
+ *       <button class="mbds-calendar-nav-button">›</button>
+ *     </div>
+ *     <table class="mbds-calendar-grid" role="grid">
+ *       <thead><tr><th>Dom</th>…</tr></thead>
+ *       <tbody><tr><td><button class="mbds-calendar-day">1</button></td>…</tr></tbody>
+ *     </table>
+ *   </div>
+ *
+ * Tokens: --background, --foreground, --muted-foreground, --primary,
+ *         --primary-foreground, --accent, --accent-foreground, --input,
+ *         --ring, --radius, --spacing-*
+ */
+
+.mbds-calendar {
+  padding: var(--spacing-3, 0.75rem);             /* 12px */
+  user-select: none;
+}
+
+/* ── Nav (header com mês + setas) ────────────────────────────────────────── */
+.mbds-calendar-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-1);
+  margin-bottom: var(--spacing-2);
+}
+
+.mbds-calendar-nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;                                  /* 28px */
+  height: 1.75rem;
+
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--input, var(--border)));
+  border-radius: var(--radius, 0.5rem);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.mbds-calendar-nav-button:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.mbds-calendar-nav-button:focus-visible {
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+
+.mbds-calendar-nav-button > svg {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+.mbds-calendar-month-label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium, 500);
+  color: hsl(var(--foreground));
+}
+
+/* ── Grid (tabela com dias) ──────────────────────────────────────────────── */
+.mbds-calendar-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mbds-calendar-grid > thead > tr {
+  display: flex;
+}
+
+.mbds-calendar-grid > thead > tr > th {
+  width: var(--spacing-8, 2rem);                  /* 32px */
+  text-align: center;
+  font-size: 0.8rem;                               /* 12.8px */
+  font-weight: var(--font-weight-normal, 400);
+  color: hsl(var(--muted-foreground));
+}
+
+.mbds-calendar-grid > tbody > tr {
+  display: flex;
+  width: 100%;
+  margin-top: var(--spacing-2);
+}
+
+.mbds-calendar-grid > tbody > tr > td {
+  position: relative;
+  padding: 0;
+  text-align: center;
+}
+
+/* ── Day button ──────────────────────────────────────────────────────────── */
+.mbds-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--spacing-8, 2rem);                   /* 32px */
+  height: var(--spacing-8, 2rem);
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius, 0.5rem);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-normal, 400);
+  color: inherit;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.mbds-calendar-day:hover:not(:disabled):not([aria-selected="true"]) {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.mbds-calendar-day:focus-visible {
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+
+/* Estado: hoje (sem seleção) — fundo accent suave */
+.mbds-calendar-day[data-today="true"]:not([aria-selected="true"]) {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* Estado: selecionado — fundo primary */
+.mbds-calendar-day[aria-selected="true"] {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.mbds-calendar-day:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbds-calendar-nav-button,
+  .mbds-calendar-day {
+    transition: none;
+  }
+}
