@@ -6,8 +6,8 @@
     "description": "Uma especificação, quatro implementações, um resultado visual. Cada stack usa uma lib base diferente — as APIs divergem, mas o markup final, o comportamento de teclado e os tokens visuais não.",
     "seo": {
       "title": "Divergências Cross-Stack",
-      "description": "Como o sistema mantém consistência visual entre React, Vue, Svelte e Nortear apesar das APIs divergentes das libs base headless.",
-      "aiSummary": "Página técnica que documenta divergências entre stacks. Lista as libs base por stack (base-ui no React, reka-ui no Vue, bits-ui no Svelte, factories vanilla no Nortear), apresenta tabelas de divergência conhecidas (Accordion, DataTable, Checkbox), explica a estratégia de texto API-neutro em translations.json e indica onde menções literais são aceitáveis (snippets de código, props.table.name/type).",
+      "description": "Como o sistema mantém consistência visual entre React, Vue, Svelte e MiniBrain apesar das APIs divergentes das libs base headless.",
+      "aiSummary": "Página técnica que documenta divergências entre stacks. Lista as libs base por stack (base-ui no React, reka-ui no Vue, bits-ui no Svelte, factories vanilla no MiniBrain), apresenta tabelas de divergência conhecidas (Accordion, DataTable, Checkbox), explica a estratégia de texto API-neutro em translations.json e indica onde menções literais são aceitáveis (snippets de código, props.table.name/type).",
       "aiEntities": "cross-stack, base-ui, reka-ui, bits-ui, basecoat, factories, headless, API-neutro, Accordion, DataTable, Checkbox, override, structureCode",
       "aiIntent": "informational"
     },
@@ -40,8 +40,8 @@
           "lib": "bits-ui",
           "approach": "Componentes compostos com Svelte 5 runes; props camelCase, slots nativos."
         },
-        "nortear": {
-          "stack": "Nortear",
+        "minibrain": {
+          "stack": "MiniBrain",
           "lib": "basecoat-css + factories vanilla TS",
           "approach": "Funções factory que retornam HTML + listeners; estilo via classes basecoat."
         }
@@ -60,7 +60,7 @@
         "dataTable": {
           "component": "DataTable",
           "concept": "Hook/factory que recebe colunas + dados e devolve API para renderizar header, body, paginação.",
-          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), composição com runes em Svelte e factory direta no Nortear. APIs próximas mas com conventions distintas (refs vs reactive vs $state).",
+          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), composição com runes em Svelte e factory direta no MiniBrain. APIs próximas mas com conventions distintas (refs vs reactive vs $state).",
           "neutral": "\"Hook de tabela com columns e data; expõe instância para render.\""
         },
         "checkbox": {
@@ -78,7 +78,7 @@
         "dialog": {
           "component": "Dialog",
           "concept": "Trigger renderizado separado do overlay via portal.",
-          "divergence": "<code>asChild</code> em base-ui transfere props para o filho; reka-ui usa slot prop; bits-ui combina os dois patterns; Nortear não tem o conceito.",
+          "divergence": "<code>asChild</code> em base-ui transfere props para o filho; reka-ui usa slot prop; bits-ui combina os dois patterns; MiniBrain não tem o conceito.",
           "neutral": "\"Trigger e overlay são montados separadamente; o trigger aceita ser substituído por um elemento filho.\""
         }
       }
@@ -93,7 +93,7 @@
         },
         "codeKeys": {
           "title": "Chaves *Code: stack-specific",
-          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> contêm snippets literais. Cada stack lê o seu subset (JSX no React, <code>&lt;template&gt;</code> no Vue, marcação <code>.svelte</code> no Svelte, HTML+TS no Nortear)."
+          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> contêm snippets literais. Cada stack lê o seu subset (JSX no React, <code>&lt;template&gt;</code> no Vue, marcação <code>.svelte</code> no Svelte, HTML+TS no MiniBrain)."
         },
         "propsTable": {
           "title": "Tabela de props: name/type literais OK",
@@ -113,7 +113,7 @@
         "react": "React",
         "vue": "Vue",
         "svelte": "Svelte",
-        "nortear": "Nortear"
+        "minibrain": "MiniBrain"
       },
       "rows": {
         "accordion": {
@@ -121,35 +121,35 @@
           "react": "string",
           "vue": "boolean",
           "svelte": "string",
-          "nortear": "data-attr"
+          "minibrain": "data-attr"
         },
         "checkbox": {
           "component": "Checkbox",
           "react": "boolean prop",
           "vue": "string em checked",
           "svelte": "union literal",
-          "nortear": "aria-checked"
+          "minibrain": "aria-checked"
         },
         "select": {
           "component": "Select",
           "react": "value/onValueChange",
           "vue": "v-model",
           "svelte": "bind:value",
-          "nortear": "event listener"
+          "minibrain": "event listener"
         },
         "dialog": {
           "component": "Dialog",
           "react": "asChild",
           "vue": "as-child slot",
           "svelte": "child snippet",
-          "nortear": "factory params"
+          "minibrain": "factory params"
         },
         "form": {
           "component": "Form",
           "react": "react-hook-form",
           "vue": "vee-validate",
           "svelte": "sveltekit-superforms",
-          "nortear": "FormData nativo"
+          "minibrain": "FormData nativo"
         }
       }
     },
@@ -170,8 +170,8 @@
     "description": "One spec, four implementations, one visual result. Each stack uses a different base library — APIs diverge, but the final markup, keyboard behavior and visual tokens do not.",
     "seo": {
       "title": "Cross-Stack Divergences",
-      "description": "How the system keeps visual consistency across React, Vue, Svelte and Nortear despite divergent APIs in the headless base libraries.",
-      "aiSummary": "Technical page documenting per-stack divergences. Lists the base libraries per stack (base-ui in React, reka-ui in Vue, bits-ui in Svelte, vanilla factories in Nortear), shows known divergence tables (Accordion, DataTable, Checkbox), explains the API-neutral text strategy in translations.json and points out where literal mentions are acceptable (code snippets, props.table.name/type).",
+      "description": "How the system keeps visual consistency across React, Vue, Svelte and MiniBrain despite divergent APIs in the headless base libraries.",
+      "aiSummary": "Technical page documenting per-stack divergences. Lists the base libraries per stack (base-ui in React, reka-ui in Vue, bits-ui in Svelte, vanilla factories in MiniBrain), shows known divergence tables (Accordion, DataTable, Checkbox), explains the API-neutral text strategy in translations.json and points out where literal mentions are acceptable (code snippets, props.table.name/type).",
       "aiEntities": "cross-stack, base-ui, reka-ui, bits-ui, basecoat, factories, headless, API-neutral, Accordion, DataTable, Checkbox, override, structureCode",
       "aiIntent": "informational"
     },
@@ -204,8 +204,8 @@
           "lib": "bits-ui",
           "approach": "Compound components with Svelte 5 runes; camelCase props, native slots."
         },
-        "nortear": {
-          "stack": "Nortear",
+        "minibrain": {
+          "stack": "MiniBrain",
           "lib": "basecoat-css + vanilla TS factories",
           "approach": "Factory functions returning HTML + listeners; styling via basecoat classes."
         }
@@ -224,7 +224,7 @@
         "dataTable": {
           "component": "DataTable",
           "concept": "Hook/factory taking columns + data and returning an API to render header, body, pagination.",
-          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), runes-based composition in Svelte and a direct factory in Nortear. Close APIs but different conventions (refs vs reactive vs $state).",
+          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), runes-based composition in Svelte and a direct factory in MiniBrain. Close APIs but different conventions (refs vs reactive vs $state).",
           "neutral": "\"Table hook taking columns and data; exposes an instance to render.\""
         },
         "checkbox": {
@@ -242,7 +242,7 @@
         "dialog": {
           "component": "Dialog",
           "concept": "Trigger rendered separately from the overlay via portal.",
-          "divergence": "<code>asChild</code> in base-ui forwards props to the child; reka-ui uses a slot prop; bits-ui combines both patterns; Nortear has no equivalent concept.",
+          "divergence": "<code>asChild</code> in base-ui forwards props to the child; reka-ui uses a slot prop; bits-ui combines both patterns; MiniBrain has no equivalent concept.",
           "neutral": "\"Trigger and overlay mount separately; the trigger accepts being substituted by a child element.\""
         }
       }
@@ -257,7 +257,7 @@
         },
         "codeKeys": {
           "title": "*Code keys: stack-specific",
-          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> hold literal snippets. Each stack reads its own subset (JSX in React, <code>&lt;template&gt;</code> in Vue, <code>.svelte</code> markup in Svelte, HTML+TS in Nortear)."
+          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> hold literal snippets. Each stack reads its own subset (JSX in React, <code>&lt;template&gt;</code> in Vue, <code>.svelte</code> markup in Svelte, HTML+TS in MiniBrain)."
         },
         "propsTable": {
           "title": "Props table: name/type literals OK",
@@ -277,7 +277,7 @@
         "react": "React",
         "vue": "Vue",
         "svelte": "Svelte",
-        "nortear": "Nortear"
+        "minibrain": "MiniBrain"
       },
       "rows": {
         "accordion": {
@@ -285,35 +285,35 @@
           "react": "string",
           "vue": "boolean",
           "svelte": "string",
-          "nortear": "data-attr"
+          "minibrain": "data-attr"
         },
         "checkbox": {
           "component": "Checkbox",
           "react": "boolean prop",
           "vue": "string in checked",
           "svelte": "union literal",
-          "nortear": "aria-checked"
+          "minibrain": "aria-checked"
         },
         "select": {
           "component": "Select",
           "react": "value/onValueChange",
           "vue": "v-model",
           "svelte": "bind:value",
-          "nortear": "event listener"
+          "minibrain": "event listener"
         },
         "dialog": {
           "component": "Dialog",
           "react": "asChild",
           "vue": "as-child slot",
           "svelte": "child snippet",
-          "nortear": "factory params"
+          "minibrain": "factory params"
         },
         "form": {
           "component": "Form",
           "react": "react-hook-form",
           "vue": "vee-validate",
           "svelte": "sveltekit-superforms",
-          "nortear": "native FormData"
+          "minibrain": "native FormData"
         }
       }
     },
@@ -334,8 +334,8 @@
     "description": "Una especificación, cuatro implementaciones, un resultado visual. Cada stack usa una lib base distinta — las APIs divergen, pero el markup final, el comportamiento de teclado y los tokens visuales no.",
     "seo": {
       "title": "Divergencias Cross-Stack",
-      "description": "Cómo el sistema mantiene consistencia visual entre React, Vue, Svelte y Nortear pese a las APIs divergentes de las libs base headless.",
-      "aiSummary": "Página técnica que documenta divergencias entre stacks. Lista las libs base por stack (base-ui en React, reka-ui en Vue, bits-ui en Svelte, factories vanilla en Nortear), presenta tablas de divergencias conocidas (Accordion, DataTable, Checkbox), explica la estrategia de texto API-neutro en translations.json e indica dónde son aceptables las menciones literales (snippets de código, props.table.name/type).",
+      "description": "Cómo el sistema mantiene consistencia visual entre React, Vue, Svelte y MiniBrain pese a las APIs divergentes de las libs base headless.",
+      "aiSummary": "Página técnica que documenta divergencias entre stacks. Lista las libs base por stack (base-ui en React, reka-ui en Vue, bits-ui en Svelte, factories vanilla en MiniBrain), presenta tablas de divergencias conocidas (Accordion, DataTable, Checkbox), explica la estrategia de texto API-neutro en translations.json e indica dónde son aceptables las menciones literales (snippets de código, props.table.name/type).",
       "aiEntities": "cross-stack, base-ui, reka-ui, bits-ui, basecoat, factories, headless, API-neutro, Accordion, DataTable, Checkbox, override, structureCode",
       "aiIntent": "informational"
     },
@@ -368,8 +368,8 @@
           "lib": "bits-ui",
           "approach": "Componentes compuestos con Svelte 5 runes; props camelCase, slots nativos."
         },
-        "nortear": {
-          "stack": "Nortear",
+        "minibrain": {
+          "stack": "MiniBrain",
           "lib": "basecoat-css + factories vanilla TS",
           "approach": "Funciones factory que devuelven HTML + listeners; estilo vía clases basecoat."
         }
@@ -388,7 +388,7 @@
         "dataTable": {
           "component": "DataTable",
           "concept": "Hook/factory que recibe columnas + datos y devuelve API para renderizar header, body, paginación.",
-          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), composición con runes en Svelte y factory directa en Nortear. APIs cercanas pero con convenciones distintas (refs vs reactive vs $state).",
+          "divergence": "<code>useReactTable</code> (TanStack React), <code>useVueTable</code> (TanStack Vue), composición con runes en Svelte y factory directa en MiniBrain. APIs cercanas pero con convenciones distintas (refs vs reactive vs $state).",
           "neutral": "\"Hook de tabla con columns y data; expone instancia para render.\""
         },
         "checkbox": {
@@ -406,7 +406,7 @@
         "dialog": {
           "component": "Dialog",
           "concept": "Trigger renderizado separado del overlay vía portal.",
-          "divergence": "<code>asChild</code> en base-ui transfiere props al hijo; reka-ui usa slot prop; bits-ui combina ambos patterns; Nortear no tiene el concepto.",
+          "divergence": "<code>asChild</code> en base-ui transfiere props al hijo; reka-ui usa slot prop; bits-ui combina ambos patterns; MiniBrain no tiene el concepto.",
           "neutral": "\"Trigger y overlay se montan separadamente; el trigger acepta ser sustituido por un elemento hijo.\""
         }
       }
@@ -421,7 +421,7 @@
         },
         "codeKeys": {
           "title": "Claves *Code: stack-specific",
-          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> contienen snippets literales. Cada stack lee su propio subset (JSX en React, <code>&lt;template&gt;</code> en Vue, marcado <code>.svelte</code> en Svelte, HTML+TS en Nortear)."
+          "body": "<code>structureCode</code>, <code>extensibilityCode</code>, <code>customizationCode</code>, <code>interfaceCode</code> contienen snippets literales. Cada stack lee su propio subset (JSX en React, <code>&lt;template&gt;</code> en Vue, marcado <code>.svelte</code> en Svelte, HTML+TS en MiniBrain)."
         },
         "propsTable": {
           "title": "Tabla de props: name/type literales OK",
@@ -441,7 +441,7 @@
         "react": "React",
         "vue": "Vue",
         "svelte": "Svelte",
-        "nortear": "Nortear"
+        "minibrain": "MiniBrain"
       },
       "rows": {
         "accordion": {
@@ -449,35 +449,35 @@
           "react": "string",
           "vue": "boolean",
           "svelte": "string",
-          "nortear": "data-attr"
+          "minibrain": "data-attr"
         },
         "checkbox": {
           "component": "Checkbox",
           "react": "boolean prop",
           "vue": "string en checked",
           "svelte": "union literal",
-          "nortear": "aria-checked"
+          "minibrain": "aria-checked"
         },
         "select": {
           "component": "Select",
           "react": "value/onValueChange",
           "vue": "v-model",
           "svelte": "bind:value",
-          "nortear": "event listener"
+          "minibrain": "event listener"
         },
         "dialog": {
           "component": "Dialog",
           "react": "asChild",
           "vue": "as-child slot",
           "svelte": "child snippet",
-          "nortear": "factory params"
+          "minibrain": "factory params"
         },
         "form": {
           "component": "Form",
           "react": "react-hook-form",
           "vue": "vee-validate",
           "svelte": "sveltekit-superforms",
-          "nortear": "FormData nativo"
+          "minibrain": "FormData nativo"
         }
       }
     },

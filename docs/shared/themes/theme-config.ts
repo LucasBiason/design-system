@@ -53,13 +53,13 @@ export const themeCssClasses: Record<ThemeId, string> = Object.fromEntries(
 
 export const subdomainThemeMap: Record<string, ThemeId> = {
   localhost: 'default',
-  nortear:   'default',
+  minibrain:   'default',
   admin:     'default',
 };
 
 // ─── Domínios de produção ─────────────────────────────────────────────────────
 
-const PRODUCTION_DOMAINS = ['nortear.com.br', 'design-system.dev'];
+const PRODUCTION_DOMAINS = ['minibrain.com.br', 'design-system.dev'];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

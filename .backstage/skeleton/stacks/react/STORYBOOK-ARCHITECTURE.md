@@ -153,7 +153,7 @@ const preview: Preview = {
       defaultValue: 'default',
       toolbar: {
         items: [
-          { value: 'default', title: 'Nortear (Padrão)' },
+          { value: 'default', title: 'MiniBrain (Padrão)' },
           { value: 'tema-um',  title: 'Crystal (Indigo)' },
           { value: 'tema-dois', title: 'Industrial (Amber)' },
         ],
@@ -299,7 +299,7 @@ const subdomainThemeMap = {
   'localhost': 'default',
   'crystal':   'tema-um',
   'admin':     'tema-dois',
-  'nortear':   'default',
+  'minibrain':   'default',
 };
 ```
 

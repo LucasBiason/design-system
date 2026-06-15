@@ -4,7 +4,7 @@
     "category": "Foundations",
     "badge": "Arquitetura",
     "subtitle": "Multi-tenancy & Theming",
-    "description": "O Nortear Design System utiliza uma arquitetura de temas baseada em subdomínios, permitindo que múltiplas marcas utilizem o mesmo core de componentes com identidades visuais distintas.",
+    "description": "O MiniBrain Design System utiliza uma arquitetura de temas baseada em subdomínios, permitindo que múltiplas marcas utilizem o mesmo core de componentes com identidades visuais distintas.",
     "howItWorks": {
       "title": "Como funciona",
       "description": "A seleção do tema ocorre de forma automática no nível de aplicação (App.tsx). O sistema extrai o subdomínio da URL atual e injeta uma classe CSS correspondente na tag html.",
@@ -45,7 +45,7 @@
     "category": "Foundations",
     "badge": "Architecture",
     "subtitle": "Multi-tenancy & Theming",
-    "description": "The Nortear Design System uses a subdomain-based theme architecture, allowing multiple brands to share the same component core with distinct visual identities.",
+    "description": "The MiniBrain Design System uses a subdomain-based theme architecture, allowing multiple brands to share the same component core with distinct visual identities.",
     "howItWorks": {
       "title": "How it works",
       "description": "Theme selection happens automatically at the application level (App.tsx). The system extracts the subdomain from the current URL and injects a corresponding CSS class into the html tag.",
@@ -86,7 +86,7 @@
     "category": "Foundations",
     "badge": "Arquitectura",
     "subtitle": "Multi-tenancy & Tematización",
-    "description": "El Nortear Design System utiliza una arquitectura de temas basada en subdominios, lo que permite que múltiples marcas utilicen el mismo núcleo de componentes con identidades visuales distintas.",
+    "description": "El MiniBrain Design System utiliza una arquitectura de temas basada en subdominios, lo que permite que múltiples marcas utilicen el mismo núcleo de componentes con identidades visuales distintas.",
     "howItWorks": {
       "title": "Cómo funciona",
       "description": "La selección del tema ocurre automáticamente a nivel de aplicación (App.tsx). El sistema extrae el subdominio de la URL actual e inyecta una clase CSS correspondiente en la etiqueta html.",

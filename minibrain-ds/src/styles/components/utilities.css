@@ -1,0 +1,112 @@
+/*
+ * ─── Misc utilities ──────────────────────────────────────────────────────────
+ * Pequeno conjunto de utilities que NÃO se encaixam em layout/typography/
+ * colors. Mantidos curtos e específicos — não recriar Tailwind aqui.
+ */
+
+/* ── Lists ─────────────────────────────────────────────────────────────────── */
+.mbds-list-disc {
+  list-style: disc;
+  padding-left: 1.25rem;                 /* 20px — espaço para o bullet */
+}
+.mbds-list-disc::marker { color: hsl(var(--muted-foreground)); }
+.mbds-list-disc > li::marker { color: hsl(var(--muted-foreground)); }
+
+.mbds-list-none {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* ── Overflow ──────────────────────────────────────────────────────────────── */
+.mbds-overflow-x { overflow-x: auto; }
+.mbds-overflow-y { overflow-y: auto; }
+.mbds-overflow-hidden { overflow: hidden; }
+
+/* ── Whitespace ────────────────────────────────────────────────────────────── */
+.mbds-whitespace-pre    { white-space: pre; }
+.mbds-whitespace-nowrap { white-space: nowrap; }
+.mbds-whitespace-normal { white-space: normal; }
+
+/* ── Sizing ────────────────────────────────────────────────────────────────── */
+.mbds-w-full   { width: 100%; }
+.mbds-w-auto   { width: auto; }
+.mbds-w-xs     { width: 16rem; }                        /* 256px */
+.mbds-w-sm     { width: 20rem; }                        /* 320px */
+.mbds-w-md     { width: 24rem; }                        /* 384px */
+.mbds-w-lg     { width: 32rem; }                        /* 512px */
+
+/* Square sizing (grid 8) — para elementos que precisam de width+height iguais */
+.mbds-size-4   { width: 1rem;     height: 1rem;    }    /* 16px */
+.mbds-size-6   { width: 1.5rem;   height: 1.5rem;  }    /* 24px */
+.mbds-size-8   { width: 2rem;     height: 2rem;    }    /* 32px */
+.mbds-size-10  { width: 2.5rem;   height: 2.5rem;  }    /* 40px */
+.mbds-size-12  { width: 3rem;     height: 3rem;    }    /* 48px */
+.mbds-size-16  { width: 4rem;     height: 4rem;    }    /* 64px */
+
+/* Flexbox spacer — empurra o elemento para o fim do eixo principal do pai
+ * (ex: dentro de .mbds-cluster, manda o item para a direita).
+ * Substitui o padrão "wrap inner cluster + justify-between" quando há
+ * apenas um item à direita. */
+.mbds-spacer-start { margin-inline-start: auto; }
+.mbds-max-w-xs    { max-width: 20rem; }                 /* 320px */
+.mbds-max-w-sm    { max-width: 24rem; }                 /* 384px — formulários */
+.mbds-max-w-md    { max-width: 28rem; }                 /* 448px */
+.mbds-max-w-lg    { max-width: 32rem; }                 /* 512px */
+.mbds-max-w-prose { max-width: 48rem; }                 /* leitura confortável */
+.mbds-max-w-content { max-width: 64rem; }
+.mbds-min-w-0  { min-width: 0; }
+.mbds-shrink-0 { flex-shrink: 0; }
+.mbds-flex-1   { flex: 1 1 0%; }
+.mbds-flex-auto { flex: 1 1 auto; }
+
+/* ── Table ─────────────────────────────────────────────────────────────────── */
+.mbds-border-collapse { border-collapse: collapse; }
+.mbds-border-separate { border-collapse: separate; }
+
+/* Tamanhos de ícone — para SVGs decorativos */
+.mbds-icon-sm { width: 0.875rem; height: 0.875rem; }   /* 14px */
+.mbds-icon    { width: 1rem;     height: 1rem;     }   /* 16px */
+.mbds-icon-lg { width: 1.25rem;  height: 1.25rem;  }   /* 20px */
+
+/* ── Border radius ─────────────────────────────────────────────────────────── */
+.mbds-rounded-sm   { border-radius: 0.25rem; }
+.mbds-rounded      { border-radius: 0.375rem; }
+.mbds-rounded-md   { border-radius: 0.5rem; }
+.mbds-rounded-lg   { border-radius: 0.625rem; }
+.mbds-rounded-full { border-radius: 9999px; }
+
+/* ── Visibility / Accessibility ────────────────────────────────────────────── */
+.mbds-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.mbds-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Cursor / pointer ─────────────────────────────────────────────────────── */
+.mbds-cursor-pointer { cursor: pointer; }
+.mbds-cursor-default { cursor: default; }
+
+/* ── Display ───────────────────────────────────────────────────────────────── */
+.mbds-hidden       { display: none; }
+.mbds-inline-block { display: inline-block; }
+.mbds-block        { display: block; }
+
+/* ── Divider ───────────────────────────────────────────────────────────────── */
+.mbds-divider {
+  height: 1px;
+  width: 100%;
+  background-color: hsl(var(--border));
+  border: 0;
+  margin: 0;
+}

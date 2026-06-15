@@ -48,11 +48,11 @@ Definidos em [docs/shared/tokens/motion.css](../tokens/motion.css). Resumo:
 ### Em CSS
 
 ```css
-.nds-button {
+.mbds-button {
   transition: background-color var(--duration-fast) var(--ease-standard),
               transform var(--duration-fast) var(--ease-standard);
 }
-.nds-button:active {
+.mbds-button:active {
   transform: scale(0.97);
 }
 ```

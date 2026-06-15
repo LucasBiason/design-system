@@ -1,6 +1,6 @@
 # Contribuindo
 
-Obrigado por considerar contribuir com o Nortear Design System.
+Obrigado por considerar contribuir com o MiniBrain Design System.
 
 ## Visão geral
 
@@ -16,7 +16,7 @@ cd design-system
 cd design-system-react && npm install
 cd ../design-system-vue && npm install
 cd ../design-system-svelte && npm install
-cd ../nortear-design-system && npm install
+cd ../minibrain-ds && npm install
 ```
 
 Pré-requisitos: Node 18+, npm.
@@ -98,7 +98,7 @@ Use prefixos descritivos:
 - `patch(<package>): ...` — patches upstream via patch-package
 - `skill(<skill-name>): <component>` — quando uma skill foi executada
 
-Scope é tipicamente a stack ou área (`react`, `vue`, `svelte`, `nortear`, `foundations`, `guidelines`, `stories`).
+Scope é tipicamente a stack ou área (`react`, `vue`, `svelte`, `minibrain`, `foundations`, `guidelines`, `stories`).
 
 ## Antes de abrir um PR
 

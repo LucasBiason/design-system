@@ -126,7 +126,7 @@
       "subtitle": "Valores ímpares ou fora dos múltiplos/divisores de 8 quebram a coerência visual e devem ser corrigidos.",
       "rules": {
         "react": "Em React, Vue e Svelte: use classes Tailwind padrão (<code>p-1</code>, <code>p-2</code>, <code>p-4</code>, <code>p-6</code>, <code>p-8</code>) — todas no grid.",
-        "nortear": "No stack Nortear, qualquer valor de px hardcoded fora do grid (3, 5, 7, 9, 10, 11, 13, 14...) é considerado bug — substitua pelo token correspondente.",
+        "minibrain": "No stack MiniBrain, qualquer valor de px hardcoded fora do grid (3, 5, 7, 9, 10, 11, 13, 14...) é considerado bug — substitua pelo token correspondente.",
         "arbitrary": "Evite arbitrary values do Tailwind (<code>p-[13px]</code>, <code>gap-[7px]</code>) — só fazem sentido para casos extraordinários, sempre justificados em PR.",
         "density": "Confira o resultado nas três densidades (condensado, default, confortável). Se algo quebra em uma delas, provavelmente é um valor hardcoded escapando do token."
       }
@@ -266,7 +266,7 @@
       "subtitle": "Odd values or values outside multiples/divisors of 8 break visual coherence and must be fixed.",
       "rules": {
         "react": "In React, Vue and Svelte: use standard Tailwind classes (<code>p-1</code>, <code>p-2</code>, <code>p-4</code>, <code>p-6</code>, <code>p-8</code>) — all on grid.",
-        "nortear": "In the Nortear stack, any hardcoded px value outside the grid (3, 5, 7, 9, 10, 11, 13, 14...) is considered a bug — replace it with the matching token.",
+        "minibrain": "In the MiniBrain stack, any hardcoded px value outside the grid (3, 5, 7, 9, 10, 11, 13, 14...) is considered a bug — replace it with the matching token.",
         "arbitrary": "Avoid Tailwind arbitrary values (<code>p-[13px]</code>, <code>gap-[7px]</code>) — they only make sense for exceptional cases, always justified in the PR.",
         "density": "Check the result across all three densities (condensed, default, comfortable). If something breaks in one of them, it's probably a hardcoded value escaping the token."
       }
@@ -406,7 +406,7 @@
       "subtitle": "Valores impares o fuera de los múltiplos/divisores de 8 rompen la coherencia visual y deben corregirse.",
       "rules": {
         "react": "En React, Vue y Svelte: usa clases Tailwind estándar (<code>p-1</code>, <code>p-2</code>, <code>p-4</code>, <code>p-6</code>, <code>p-8</code>) — todas en el grid.",
-        "nortear": "En el stack Nortear, cualquier valor de px hardcodeado fuera del grid (3, 5, 7, 9, 10, 11, 13, 14...) se considera bug — sustituye por el token correspondiente.",
+        "minibrain": "En el stack MiniBrain, cualquier valor de px hardcodeado fuera del grid (3, 5, 7, 9, 10, 11, 13, 14...) se considera bug — sustituye por el token correspondiente.",
         "arbitrary": "Evita arbitrary values de Tailwind (<code>p-[13px]</code>, <code>gap-[7px]</code>) — solo tienen sentido para casos extraordinarios, siempre justificados en PR.",
         "density": "Verifica el resultado en las tres densidades (condensado, default, cómodo). Si algo se rompe en una de ellas, probablemente es un valor hardcodeado escapando del token."
       }

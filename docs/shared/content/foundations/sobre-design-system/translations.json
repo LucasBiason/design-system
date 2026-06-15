@@ -7,7 +7,7 @@
     "seo": {
       "title": "Sobre",
       "description": "Design System multi-stack com React, Vue, Svelte e Vanilla TS sobre tokens compartilhados, primitives headless e WCAG 2.1 AA por padrão.",
-      "aiSummary": "Página de visão geral do Design System. Explica o propósito, os 4 stacks suportados (React + base-ui, Vue + reka-ui, Svelte + bits-ui, Nortear + basecoat), a arquitetura de conteúdo compartilhado e os princípios fundamentais.",
+      "aiSummary": "Página de visão geral do Design System. Explica o propósito, os 4 stacks suportados (React + base-ui, Vue + reka-ui, Svelte + bits-ui, MiniBrain + basecoat), a arquitetura de conteúdo compartilhado e os princípios fundamentais.",
       "aiEntities": "Design System, React, Vue, Svelte, Basecoat, Tailwind, Storybook, tokens semânticos, WCAG, multi-stack",
       "aiIntent": "informational"
     },
@@ -44,8 +44,8 @@
           "port": "6008",
           "when": "Aplicações Svelte 5 com runes e SvelteKit"
         },
-        "nortear": {
-          "name": "Nortear",
+        "minibrain": {
+          "name": "MiniBrain",
           "base": "basecoat-css + Vanilla TS",
           "port": "6009",
           "when": "Sites estáticos, micro-frontends ou bases legadas sem framework"
@@ -58,7 +58,7 @@
       "items": {
         "consistency": {
           "title": "Consistência visual entre stacks",
-          "body": "O mesmo componente renderiza o mesmo pixel em React, Vue, Svelte e Nortear. Auditores deterministas comparam markup e estilos."
+          "body": "O mesmo componente renderiza o mesmo pixel em React, Vue, Svelte e MiniBrain. Auditores deterministas comparam markup e estilos."
         },
         "a11y": {
           "title": "Acessibilidade primeiro",
@@ -114,7 +114,7 @@
     "seo": {
       "title": "About",
       "description": "Multi-stack Design System with React, Vue, Svelte and Vanilla TS over shared tokens, headless primitives and WCAG 2.1 AA by default.",
-      "aiSummary": "Overview page of the Design System. Explains the purpose, the 4 supported stacks (React + base-ui, Vue + reka-ui, Svelte + bits-ui, Nortear + basecoat), the shared content architecture and the core principles.",
+      "aiSummary": "Overview page of the Design System. Explains the purpose, the 4 supported stacks (React + base-ui, Vue + reka-ui, Svelte + bits-ui, MiniBrain + basecoat), the shared content architecture and the core principles.",
       "aiEntities": "Design System, React, Vue, Svelte, Basecoat, Tailwind, Storybook, semantic tokens, WCAG, multi-stack",
       "aiIntent": "informational"
     },
@@ -151,8 +151,8 @@
           "port": "6008",
           "when": "Svelte 5 apps with runes and SvelteKit"
         },
-        "nortear": {
-          "name": "Nortear",
+        "minibrain": {
+          "name": "MiniBrain",
           "base": "basecoat-css + Vanilla TS",
           "port": "6009",
           "when": "Static sites, micro-frontends or legacy bases without a framework"
@@ -165,7 +165,7 @@
       "items": {
         "consistency": {
           "title": "Visual consistency across stacks",
-          "body": "The same component renders the same pixels in React, Vue, Svelte and Nortear. Deterministic auditors compare markup and styles."
+          "body": "The same component renders the same pixels in React, Vue, Svelte and MiniBrain. Deterministic auditors compare markup and styles."
         },
         "a11y": {
           "title": "Accessibility first",
@@ -221,7 +221,7 @@
     "seo": {
       "title": "Sobre",
       "description": "Design System multi-stack con React, Vue, Svelte y Vanilla TS sobre tokens compartidos, primitives headless y WCAG 2.1 AA por defecto.",
-      "aiSummary": "Página de visión general del Design System. Explica el propósito, los 4 stacks soportados (React + base-ui, Vue + reka-ui, Svelte + bits-ui, Nortear + basecoat), la arquitectura de contenido compartido y los principios fundamentales.",
+      "aiSummary": "Página de visión general del Design System. Explica el propósito, los 4 stacks soportados (React + base-ui, Vue + reka-ui, Svelte + bits-ui, MiniBrain + basecoat), la arquitectura de contenido compartido y los principios fundamentales.",
       "aiEntities": "Design System, React, Vue, Svelte, Basecoat, Tailwind, Storybook, tokens semánticos, WCAG, multi-stack",
       "aiIntent": "informational"
     },
@@ -258,8 +258,8 @@
           "port": "6008",
           "when": "Aplicaciones Svelte 5 con runes y SvelteKit"
         },
-        "nortear": {
-          "name": "Nortear",
+        "minibrain": {
+          "name": "MiniBrain",
           "base": "basecoat-css + Vanilla TS",
           "port": "6009",
           "when": "Sitios estáticos, micro-frontends o bases legadas sin framework"
@@ -272,7 +272,7 @@
       "items": {
         "consistency": {
           "title": "Consistencia visual entre stacks",
-          "body": "El mismo componente renderiza el mismo pixel en React, Vue, Svelte y Nortear. Auditores deterministas comparan markup y estilos."
+          "body": "El mismo componente renderiza el mismo pixel en React, Vue, Svelte y MiniBrain. Auditores deterministas comparan markup y estilos."
         },
         "a11y": {
           "title": "Accesibilidad primero",

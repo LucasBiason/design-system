@@ -26,7 +26,7 @@ onMounted(() => {
   document.title = '[Categoria] — Design System'
 })
 onUnmounted(() => {
-  document.title = 'Design System — Nortear (Vue)'
+  document.title = 'Design System — MiniBrain (Vue)'
 })
 </script>
 

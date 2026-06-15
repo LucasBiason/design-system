@@ -1,4 +1,4 @@
-# Spec — Rebrand Nord do Nortear Design System
+# Spec — Rebrand Nord do MiniBrain Design System
 
 - ID: nord-rebrand
 - Status: Draft (Fase 0)
@@ -9,7 +9,7 @@
 
 ## 1. Contexto e problema
 
-O repositorio e um fork do template multi-stack "Nortear Design System" (React 19, Vue 3, Svelte 5,
+O repositorio e um fork do template multi-stack "MiniBrain Design System" (React 19, Vue 3, Svelte 5,
 Vanilla TS), com tokens compartilhados, Storybook, Chromatic e auditorias. Hoje a identidade visual e
 neutra (cinza) com temas alternativos Warm e Cold.
 
@@ -20,7 +20,7 @@ oficial de frontend do ecossistema (skill `nord-theme`).
 ## 2. Objetivo
 
 Reposicionar a paleta Nord como identidade PADRAO do design system (light e dark), aplicando tambem a
-tipografia e a identidade visual da marca, mantendo o nome "Nortear", as 4 stacks sincronizadas e a
+tipografia e a identidade visual da marca, mantendo o nome "MiniBrain", as 4 stacks sincronizadas e a
 conformidade WCAG 2.1 AA.
 
 ## 3. Escopo
@@ -38,7 +38,7 @@ conformidade WCAG 2.1 AA.
 
 ### Fora do escopo
 
-- Renomear a marca (mantem "Nortear" / slug `nortear`).
+- Renomear a marca (mantem "MiniBrain" / slug `minibrain`).
 - Criar ou remover componentes; alterar APIs de componentes.
 - Mudar a arquitetura de densidades, motion, spacing ou radius.
 - Reescrever conteudo trilingue (`translations.json`).

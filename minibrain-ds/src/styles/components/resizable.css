@@ -1,0 +1,90 @@
+/*
+ * ─── mbds-resizable ──────────────────────────────────────────────────────────
+ * Containers redimensionáveis com handles arrastáveis entre painéis.
+ *
+ *   <div class="mbds-resizable" data-direction="horizontal|vertical">
+ *     <div class="mbds-resizable-panel">…</div>
+ *     <div class="mbds-resizable-handle" role="separator" tabindex="0">
+ *       <div class="mbds-resizable-grip"><svg>…</svg></div>
+ *     </div>
+ *     <div class="mbds-resizable-panel">…</div>
+ *   </div>
+ *
+ * Tokens: --border, --ring, --background, --radius-sm
+ */
+
+.mbds-resizable {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mbds-resizable[data-direction="horizontal"] { flex-direction: row;    }
+.mbds-resizable[data-direction="vertical"]   { flex-direction: column; }
+
+/* ── Panel ───────────────────────────────────────────────────────────────── */
+.mbds-resizable-panel {
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+/* ── Handle (linha arrastável) ───────────────────────────────────────────── */
+.mbds-resizable-handle {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  background-color: hsl(var(--border));
+  outline: 0;
+  transition: background-color var(--duration-fast);
+}
+
+.mbds-resizable[data-direction="horizontal"] > .mbds-resizable-handle {
+  width: 1px;
+  cursor: col-resize;
+}
+
+.mbds-resizable[data-direction="vertical"] > .mbds-resizable-handle {
+  height: 1px;
+  cursor: row-resize;
+}
+
+.mbds-resizable-handle:hover {
+  background-color: hsl(var(--ring));
+}
+
+.mbds-resizable-handle:focus-visible {
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+
+/* ── Grip (alça com pontos) ──────────────────────────────────────────────── */
+.mbds-resizable-grip {
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.75rem;                                  /* 12px */
+  height: var(--spacing-4);                        /* 16px */
+
+  background-color: hsl(var(--border));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.25rem;
+}
+
+.mbds-resizable[data-direction="vertical"] > .mbds-resizable-handle > .mbds-resizable-grip {
+  transform: rotate(90deg);
+}
+
+.mbds-resizable-grip > svg {
+  width: 0.625rem;                                 /* 10px */
+  height: 0.625rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbds-resizable-handle {
+    transition: none;
+  }
+}
