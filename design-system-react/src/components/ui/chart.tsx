@@ -32,7 +32,7 @@ echarts.use([
 
 // ─── Theme (lê tokens do <html>) ─────────────────────────────────────────────
 
-const THEME_NAME = 'nortear';
+const THEME_NAME = 'minibrain';
 
 function hsl(token: string, alpha = 1): string {
   if (typeof document === 'undefined') return 'transparent';
@@ -46,7 +46,7 @@ function cssToken(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
-function buildNortearTheme() {
+function buildMiniBrainTheme() {
   const fontFamily = cssToken('--font-family-active') || cssToken('--font-family') || 'sans-serif';
   const fg = hsl('foreground');
   const muted = hsl('muted-foreground');
@@ -79,7 +79,7 @@ function buildNortearTheme() {
 // Registra/atualiza o tema. Idempotente.
 function applyTheme() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  echarts.registerTheme(THEME_NAME, buildNortearTheme() as any);
+  echarts.registerTheme(THEME_NAME, buildMiniBrainTheme() as any);
 }
 
 // ─── Option builders ─────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-# Plan — Rebrand Nord do Nortear Design System
+# Plan — Rebrand Nord do MiniBrain Design System
 
 Referencia: spec.md (mesma pasta). Execucao em fases, commit por fase, na branch `feature/nord-rebrand`.
 
@@ -44,7 +44,7 @@ que mais importa (AA) de forma automatizada e reproduzivel.
 
 - `docs/shared/themes/fonts.css` e `tokens.json` (font-family-active): Raleway + Open Sans.
 - `@import` Google Fonts em cada `globals.css` (React/Vue/Svelte) e `index.html`/`preview-head.html`
-  (Nortear). Remover Inter como padrao (manter como opcao se ja existir no seletor de fontes).
+  (MiniBrain). Remover Inter como padrao (manter como opcao se ja existir no seletor de fontes).
 - Gate: render de tipografia nas 4 stacks; lint.
 
 ### Fase 3 — Identidade visual
@@ -52,12 +52,12 @@ que mais importa (AA) de forma automatizada e reproduzivel.
 - Substituir `branding/{logo-horizontal,simbolo,favicon,og-image}.svg` e
   `<stack>/.storybook/brand-logo.svg` pela identidade da marca (Nord).
 - Atualizar referencias de cor de marca em `theme-config.ts` (dominios) e textos de README que citem a
-  paleta antiga. Manter o nome "Nortear".
+  paleta antiga. Manter o nome "MiniBrain".
 - Gate: Storybook manager exibe novo logo; sem links quebrados.
 
 ### Fase 4 — Registro e sincronizacao das 4 stacks
 
-- Conferir `.storybook/preview.ts` de React/Vue/Svelte/Nortear: como Nord e o default, garantir que o
+- Conferir `.storybook/preview.ts` de React/Vue/Svelte/MiniBrain: como Nord e o default, garantir que o
   toolbar e o array de brands refletem a marca (sem tema "nord" extra; default ja e Nord).
 - Rodar `node scripts/audit.mjs --all --json` e corrigir divergencias.
 - Gate: paridade cross-stack (audit limpo).

@@ -1,5 +1,5 @@
 // ─── Vue Chart — barrel ──────────────────────────────────────────────────────
-// ChartContainer wrappa vue-echarts com tema Nortear.
+// ChartContainer wrappa vue-echarts com tema MiniBrain.
 // Builders puros pra montar `option` por tipo de chart.
 
 import type { EChartsCoreOption } from 'echarts/core';

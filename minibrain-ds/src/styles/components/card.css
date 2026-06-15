@@ -1,0 +1,154 @@
+/*
+ * ─── mbds-card ────────────────────────────────────────────────────────────────
+ * Container standalone — zero dependência de Tailwind ou basecoat-css.
+ *
+ * Estrutura (todos opcionais):
+ *   <div class="mbds-card" data-size="default|sm">
+ *     <div class="mbds-card-header">
+ *       <h3 class="mbds-card-title">Título</h3>
+ *       <div class="mbds-card-description">Descrição</div>
+ *       <div class="mbds-card-action"><Button /></div>
+ *     </div>
+ *     <div class="mbds-card-content">Conteúdo</div>
+ *     <div class="mbds-card-footer">Rodapé</div>
+ *   </div>
+ *
+ * Comportamentos:
+ *   - Footer presente: card-content perde padding-bottom (footer cola na base)
+ *   - Imagem como primeiro filho: card perde padding-top
+ *   - Imagem com classes mbds-card-img-first/last: cantos arredondados conforme posição
+ *   - data-size="sm": gap/padding reduzidos
+ *
+ * Tokens: --card, --card-foreground, --foreground, --muted, --border,
+ *         --radius-card, --spacing-*
+ */
+
+.mbds-card {
+  --card-bg: hsl(var(--card));
+  --card-fg: hsl(var(--card-foreground));
+  --card-ring: hsl(var(--foreground) / 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);                        /* 16px */
+  overflow: hidden;
+
+  border-radius: var(--radius-card, 0.625rem);
+  background-color: var(--card-bg);
+  color: var(--card-fg);
+  box-shadow: 0 0 0 1px var(--card-ring);
+
+  padding-block: var(--spacing-4);              /* 16px top/bottom */
+  padding-inline: var(--spacing-4);             /* 16px left/right */
+  font-size: 0.875rem;                          /* 14px */
+}
+
+/* Tamanho sm */
+.mbds-card[data-size="sm"] {
+  gap: var(--spacing-2);                        /* 8px */
+  padding-block: var(--spacing-2);
+  padding-inline: var(--spacing-2);             /* 8px left/right */
+}
+
+/* Imagem como primeiro filho — perde padding-top do card */
+.mbds-card:has(> img:first-child) { padding-top: 0; }
+/* Imagem como último filho — perde padding-bottom do card */
+.mbds-card:has(> img:last-child) { padding-bottom: 0; }
+
+/* Imagens rompem o padding-inline do card (full-bleed lateral),
+ * compensando com margin-inline negativa proporcional ao tamanho. */
+.mbds-card > img:first-child,
+.mbds-card > img:last-child,
+.mbds-card .mbds-card-img-first,
+.mbds-card .mbds-card-img-last {
+  margin-inline: calc(var(--spacing-4) * -1);
+  width: calc(100% + var(--spacing-4) * 2);
+  max-width: none;
+}
+.mbds-card[data-size="sm"] > img:first-child,
+.mbds-card[data-size="sm"] > img:last-child,
+.mbds-card[data-size="sm"] .mbds-card-img-first,
+.mbds-card[data-size="sm"] .mbds-card-img-last {
+  margin-inline: calc(var(--spacing-2) * -1);
+  width: calc(100% + var(--spacing-2) * 2);
+}
+
+/* Imagens com cantos arredondados conforme posição */
+.mbds-card > img:first-child,
+.mbds-card .mbds-card-img-first {
+  border-top-left-radius: var(--radius-card, 0.625rem);
+  border-top-right-radius: var(--radius-card, 0.625rem);
+}
+.mbds-card > img:last-child,
+.mbds-card .mbds-card-img-last {
+  border-bottom-left-radius: var(--radius-card, 0.625rem);
+  border-bottom-right-radius: var(--radius-card, 0.625rem);
+}
+
+/* Footer presente → zera padding-bottom do card (footer encosta na base) */
+.mbds-card:has(> .mbds-card-footer) { padding-bottom: 0; }
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+.mbds-card-header {
+  display: grid;
+  grid-auto-rows: min-content;
+  align-items: start;
+  gap: var(--spacing-1);                        /* 4px */
+  /* padding-inline herdado do .mbds-card */
+}
+
+/* Header com action → grid 2 colunas (texto / action) */
+.mbds-card-header:has(> .mbds-card-action) {
+  grid-template-columns: 1fr auto;
+}
+.mbds-card-header:has(> .mbds-card-description) {
+  grid-template-rows: auto auto;
+}
+
+/* ── Title ─────────────────────────────────────────────────────────────────── */
+.mbds-card-title {
+  margin: 0;
+  font-size: 1rem;                              /* 16px */
+  line-height: 1.4;
+  font-weight: var(--font-weight-medium, 500);
+}
+.mbds-card[data-size="sm"] .mbds-card-title {
+  font-size: 0.875rem;                          /* 14px */
+}
+
+/* ── Description ───────────────────────────────────────────────────────────── */
+.mbds-card-description {
+  font-size: 0.875rem;                          /* 14px */
+  color: hsl(var(--muted-foreground));
+}
+
+/* ── Action ────────────────────────────────────────────────────────────────── */
+.mbds-card-action {
+  grid-column-start: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  justify-self: end;
+}
+
+/* ── Content ───────────────────────────────────────────────────────────────── */
+.mbds-card-content {
+  /* padding-inline herdado do .mbds-card */
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+/* Footer "rompe" o padding-inline do card via margin negativa,
+ * permitindo bg-muted full-bleed até as bordas. */
+.mbds-card-footer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid hsl(var(--border));
+  background-color: hsl(var(--muted) / 0.5);
+  padding: var(--spacing-4);                    /* 16px */
+  margin-inline: calc(var(--spacing-4) * -1);   /* compensa padding-inline do card */
+  border-bottom-left-radius: var(--radius-card, 0.625rem);
+  border-bottom-right-radius: var(--radius-card, 0.625rem);
+}
+.mbds-card[data-size="sm"] .mbds-card-footer {
+  padding: var(--spacing-2);
+  margin-inline: calc(var(--spacing-2) * -1);
+}

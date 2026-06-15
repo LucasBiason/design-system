@@ -45,7 +45,7 @@ Dispare 4 `Glob` em paralelo no mesmo turno:
 - `design-system-react/src/components/ui/*.tsx`
 - `design-system-vue/src/components/ui/*/index.ts`
 - `design-system-svelte/src/components/ui/*/index.ts`
-- `nortear-design-system/src/components/ui/*.ts`
+- `minibrain-ds/src/components/ui/*.ts`
 
 Extraia basename, filtre `*.stories.*` e sufixos de variação (`-variantes`, `-tamanhos`, `-estados`, `-composicoes`, `-modos`, `-layouts`), intersecte com os demais.
 
@@ -72,9 +72,9 @@ design-system-svelte/src/components/ui/<slug>/*
 design-system-svelte/src/components/docs/*<Slug>Docs.*
 design-system-svelte/src/components/ui/<slug>/<slug>*.stories.*
 
-nortear-design-system/src/components/ui/<slug>*
-nortear-design-system/src/components/docs/*<Slug>Docs.*
-nortear-design-system/src/components/ui/<slug>*.stories.*
+minibrain-ds/src/components/ui/<slug>*
+minibrain-ds/src/components/docs/*<Slug>Docs.*
+minibrain-ds/src/components/ui/<slug>*.stories.*
 
 docs/shared/content/<slug>/translations.json
 ```

@@ -1,4 +1,4 @@
-# Tasks — Rebrand Nord do Nortear Design System
+# Tasks — Rebrand Nord do MiniBrain Design System
 
 Referencia: spec.md, plan.md. Marcar `[x]` ao concluir. Cada fase termina em commit.
 
@@ -29,14 +29,14 @@ Referencia: spec.md, plan.md. Marcar `[x]` ao concluir. Cada fase termina em com
 - [x] Definir Raleway (headings) + Open Sans (corpo) em `fonts.css` e `tokens.json`
 - [x] Adicionar token `--font-family-heading` + mapeamento `--font-heading` e regra base h1-h6
 - [x] Atualizar `@import` Google Fonts: React/Vue/Svelte `globals.css`
-- [x] Atualizar Nortear `index.html` + `preview-head.html`
+- [x] Atualizar MiniBrain `index.html` + `preview-head.html`
 - [x] Commit: `feat(nord-rebrand): tema Nord + tipografia (fases 1-2)`
 
 ## Fase 3 — Identidade visual
 
 - [x] Recolorir `branding/*.svg` (logo, simbolo, favicon, og-image) para Nord (Frost)
 - [x] Recolorir `<stack>/.storybook/brand-logo.svg` (4 stacks)
-- [~] Logo provisorio: portfolio nao tinha SVG; recolorido o simbolo "Nortear" existente (lapidar depois)
+- [~] Logo provisorio: portfolio nao tinha SVG; recolorido o simbolo "MiniBrain" existente (lapidar depois)
 - [ ] (futuro) `theme-config.ts` dominios / README sobre paleta — opcional
 - [x] Commit: `feat(nord-rebrand): branding recolorido para Nord (fase 3)`
 
@@ -50,7 +50,7 @@ Referencia: spec.md, plan.md. Marcar `[x]` ao concluir. Cada fase termina em com
 - [x] `npm run build` React (tsc + vite) — VERDE apos fix TS6133
 - [x] `scripts/check-contrast.mjs` — WCAG AA OK (light+dark)
 - [~] `npm run lint` React — 206 erros PRE-EXISTENTES (lib/motion,i18n,withAutoDocsTab), nao introduzidos pelo rebrand; fora do escopo
-- [ ] build/test Vue/Svelte/Nortear — pendente (mudancas sao CSS compartilhado; nao adicionam erro de tipo)
+- [ ] build/test Vue/Svelte/MiniBrain — pendente (mudancas sao CSS compartilhado; nao adicionam erro de tipo)
 - [ ] `npm run test-storybook` (axe AA) — pendente (recomendado antes do merge)
 - [ ] Chromatic baseline — pendente (se token configurado)
 
@@ -60,4 +60,4 @@ Referencia: spec.md, plan.md. Marcar `[x]` ao concluir. Cada fase termina em com
 - [ ] Atualizar `.gitmodules` do SecondBrain
 - [ ] Apontar skills `frontend/{nord-theme,react,css,design}` para o DS
 - [ ] Sincronizar skill `nord-theme` com os tokens finais
-- [ ] Commit (no SecondBrain): `feat(frontend): DS Nortear como referencia de layout`
+- [ ] Commit (no SecondBrain): `feat(frontend): DS MiniBrain como referencia de layout`

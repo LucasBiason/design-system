@@ -13,7 +13,7 @@
     },
     "intro": {
       "title": "Visão geral",
-      "body": "Cada componente possui um único <code>translations.json</code> em <code>docs/shared/content/&lt;slug&gt;/</code>, com chaves idênticas nos três idiomas. Os quatro stacks consomem o mesmo arquivo via hook <code>useTranslation(translations, overrides?)</code> (ou função equivalente no Nortear).",
+      "body": "Cada componente possui um único <code>translations.json</code> em <code>docs/shared/content/&lt;slug&gt;/</code>, com chaves idênticas nos três idiomas. Os quatro stacks consomem o mesmo arquivo via hook <code>useTranslation(translations, overrides?)</code> (ou função equivalente no MiniBrain).",
       "audience": "Devs que vão criar uma docs page nova ou adicionar conteúdo a uma existente."
     },
     "languages": {
@@ -106,7 +106,7 @@
     },
     "intro": {
       "title": "Overview",
-      "body": "Each component has a single <code>translations.json</code> at <code>docs/shared/content/&lt;slug&gt;/</code>, with identical keys across the three languages. All four stacks consume the same file via the <code>useTranslation(translations, overrides?)</code> hook (or equivalent function in Nortear).",
+      "body": "Each component has a single <code>translations.json</code> at <code>docs/shared/content/&lt;slug&gt;/</code>, with identical keys across the three languages. All four stacks consume the same file via the <code>useTranslation(translations, overrides?)</code> hook (or equivalent function in MiniBrain).",
       "audience": "Devs creating a new docs page or adding content to an existing one."
     },
     "languages": {
@@ -199,7 +199,7 @@
     },
     "intro": {
       "title": "Visión general",
-      "body": "Cada componente tiene un único <code>translations.json</code> en <code>docs/shared/content/&lt;slug&gt;/</code>, con claves idénticas en los tres idiomas. Los cuatro stacks consumen el mismo archivo vía el hook <code>useTranslation(translations, overrides?)</code> (o función equivalente en Nortear).",
+      "body": "Cada componente tiene un único <code>translations.json</code> en <code>docs/shared/content/&lt;slug&gt;/</code>, con claves idénticas en los tres idiomas. Los cuatro stacks consumen el mismo archivo vía el hook <code>useTranslation(translations, overrides?)</code> (o función equivalente en MiniBrain).",
       "audience": "Devs que van a crear una docs page nueva o agregar contenido a una existente."
     },
     "languages": {

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Gerador do Nortear registry (estilo shadcn, sem Tailwind/React).
+ * Gerador do MiniBrain registry (estilo shadcn, sem Tailwind/React).
  *
- * Lê os fontes do nortear-design-system/ e emite, para cada componente PoC:
+ * Lê os fontes do minibrain-ds/ e emite, para cada componente PoC:
  *   - registry/v1/<name>.json    — manifesto com files[].content inlinado
  *   - registry/v1/init.json      — camada base (lib/, tokens, themes)
  *   - registry/v1/index.json     — índice
@@ -10,9 +10,9 @@
  * Convenções:
  *   - Os manifestos preservam imports `@/lib/...` e `@/components/ui/...`. O CLI
  *     reescreve para caminhos relativos no momento do install (com base no
- *     nortear.json do projeto consumidor).
+ *     minibrain.json do projeto consumidor).
  *   - O `type` de cada arquivo (component | style | lib | tokens | theme | vendor)
- *     define onde o CLI escreve (paths.<type> do nortear.json).
+ *     define onde o CLI escreve (paths.<type> do minibrain.json).
  *
  * Para incluir um componente novo: adicione o slug em COMPONENTS.
  * Para alterar a camada base: edite INIT_FILES + INIT_ENTRY_IMPORTS + INIT_DEPS.
@@ -22,7 +22,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT       = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const NORTEAR    = path.join(ROOT, 'nortear-design-system');
+const MINIBRAIN    = path.join(ROOT, 'minibrain-ds');
 const SHARED     = path.join(ROOT, 'docs', 'shared');
 const OUT_DIR    = path.join(ROOT, 'registry', 'v1');
 
@@ -36,8 +36,8 @@ const COMPONENTS = [
 // type ∈ paths.{lib|tokens|theme|vendor|styles}; o CLI compõe o destino final.
 const INIT_FILES = [
   // lib
-  { type: 'lib',    name: 'utils.ts',         src: path.join(NORTEAR, 'src/lib/utils.ts') },
-  { type: 'lib',    name: 'sanitize-html.ts', src: path.join(NORTEAR, 'src/lib/sanitize-html.ts') },
+  { type: 'lib',    name: 'utils.ts',         src: path.join(MINIBRAIN, 'src/lib/utils.ts') },
+  { type: 'lib',    name: 'sanitize-html.ts', src: path.join(MINIBRAIN, 'src/lib/sanitize-html.ts') },
   // tokens
   { type: 'tokens', name: 'tokens.css',       src: path.join(SHARED,  'tokens/tokens.css') },
   // themes
@@ -50,7 +50,7 @@ const INIT_FILES = [
 ];
 
 // Referências por {type, name} — o CLI computa o path relativo ao entry CSS
-// usando os paths do nortear.json do consumidor (não hardcodamos diretórios).
+// usando os paths do minibrain.json do consumidor (não hardcodamos diretórios).
 const INIT_ENTRY_IMPORTS = [
   { type: 'tokens', name: 'tokens.css' },
   { type: 'theme',  name: 'index.css'  },
@@ -75,7 +75,7 @@ const indexItems = [];
   const manifest = {
     name: 'init',
     version: VERSION,
-    description: 'Camada base do Nortear: lib/, tokens, themes e os @imports do entry CSS.',
+    description: 'Camada base do MiniBrain: lib/, tokens, themes e os @imports do entry CSS.',
     dependencies: INIT_DEPS,
     registryDependencies: [],
     files,
@@ -88,8 +88,8 @@ const indexItems = [];
 
 // componentes
 for (const comp of COMPONENTS) {
-  const tsContent  = await readFile(path.join(NORTEAR, comp.ts),  'utf8');
-  const cssContent = comp.css ? await readFile(path.join(NORTEAR, comp.css), 'utf8') : null;
+  const tsContent  = await readFile(path.join(MINIBRAIN, comp.ts),  'utf8');
+  const cssContent = comp.css ? await readFile(path.join(MINIBRAIN, comp.css), 'utf8') : null;
 
   const { npmDeps, registryDeps } = detectDeps(tsContent);
 
@@ -102,7 +102,7 @@ for (const comp of COMPONENTS) {
 
   // init é dep implícita de todo componente (precisa de tokens/themes/lib).
   // Não declaramos no registryDependencies p/ não rodar add init sempre;
-  // o usuário roda `nortear init` uma vez antes do primeiro add.
+  // o usuário roda `minibrain init` uma vez antes do primeiro add.
   const manifest = {
     name: comp.name,
     version: VERSION,
@@ -122,7 +122,7 @@ for (const comp of COMPONENTS) {
 // index
 await writeJson(path.join(OUT_DIR, 'index.json'), {
   version: VERSION,
-  registry: 'nortear',
+  registry: 'minibrain',
   items: indexItems,
 });
 console.log(`✓ index.json (${indexItems.length} itens)`);

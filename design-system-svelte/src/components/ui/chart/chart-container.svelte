@@ -19,7 +19,7 @@
     SVGRenderer, CanvasRenderer,
   ]);
 
-  const THEME_NAME = 'nortear';
+  const THEME_NAME = 'minibrain';
 
   let {
     option,

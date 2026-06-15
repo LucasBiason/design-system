@@ -3,8 +3,8 @@
     "title": "Sistema de Cores",
     "category": "Foundations",
     "description": "Nossa paleta de cores é estruturada para garantir acessibilidade e flexibilidade visual entre os diferentes temas de marca.",
-    "nortear": {
-      "title": "Tema Nortear (Padrão)",
+    "minibrain": {
+      "title": "Tema MiniBrain (Padrão)",
       "subtitle": "Identidade corporativa neutra e moderna."
     },
     "crystal": {
@@ -28,8 +28,8 @@
     "title": "Color System",
     "category": "Foundations",
     "description": "Our color palette is structured to ensure accessibility and visual flexibility across different brand themes.",
-    "nortear": {
-      "title": "Nortear Theme (Default)",
+    "minibrain": {
+      "title": "MiniBrain Theme (Default)",
       "subtitle": "Neutral and modern corporate identity."
     },
     "crystal": {
@@ -53,8 +53,8 @@
     "title": "Sistema de Colores",
     "category": "Foundations",
     "description": "Nuestra paleta de colores está estructurada para garantizar la accesibilidad y la flexibilidad visual entre los diferentes temas de marca.",
-    "nortear": {
-      "title": "Tema Nortear (Predeterminado)",
+    "minibrain": {
+      "title": "Tema MiniBrain (Predeterminado)",
       "subtitle": "Identidad corporativa neutra y moderna."
     },
     "crystal": {

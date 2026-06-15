@@ -19,7 +19,7 @@ export interface ThemeDefinition {
 export const themes: ThemeDefinition[] = [
   {
     id: 'default',
-    label: 'Nortear (padrão)',
+    label: 'MiniBrain (padrão)',
     description: 'Tema neutro em preto e branco',
     cssClass: '',
   },
@@ -58,13 +58,13 @@ export const themeCssClasses: Record<ThemeId, string> = Object.fromEntries(
 export const subdomainThemeMap: Record<string, ThemeId> = {
   localhost:  'default',
   crystal:    'tema-um',
-  nortear:    'default',
+  minibrain:    'default',
   admin:      'tema-dois',
 };
 
 // ─── Domínios de produção ─────────────────────────────────────────────────────
 
-const PRODUCTION_DOMAINS = ['nortear.com.br', 'design-system.dev'];
+const PRODUCTION_DOMAINS = ['minibrain.com.br', 'design-system.dev'];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

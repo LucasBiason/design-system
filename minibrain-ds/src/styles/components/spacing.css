@@ -1,0 +1,59 @@
+/*
+ * ─── Spacing utilities ───────────────────────────────────────────────────────
+ * Padding/margin atômicos, restritos ao grid 8 (múltiplos/divisores de 8 apenas).
+ * Sempre preferir primitivas (.mbds-stack, .mbds-cluster, .mbds-box) — estas classes
+ * só devem ser usadas como complemento pontual.
+ *
+ * Convenção do número:
+ *   0    = 0
+ *   0-5  = 2px  (--spacing-0-5)
+ *   1    = 4px  (--spacing-1)
+ *   2    = 8px  (--spacing-2)
+ *   4    = 16px (--spacing-4)
+ *   6    = 24px (--spacing-6)
+ *   8    = 32px (--spacing-8)
+ *
+ * Valores fora do grid (3=12, 5=20, 7=28, etc.) NÃO existem como utility.
+ * Use a opção mais próxima do grid (3→2 ou 4; 5→4 ou 6).
+ */
+
+/* ── Padding (todos os lados) ──────────────────────────────────────────────── */
+.mbds-p-0    { padding: 0; }
+.mbds-p-0-5  { padding: var(--spacing-0-5); }
+.mbds-p-1    { padding: var(--spacing-1); }
+.mbds-p-2    { padding: var(--spacing-2); }
+.mbds-p-4    { padding: var(--spacing-4); }
+.mbds-p-6    { padding: var(--spacing-6); }
+.mbds-p-8    { padding: var(--spacing-8); }
+
+/* ── Padding inline (px) ───────────────────────────────────────────────────── */
+.mbds-px-0    { padding-inline: 0; }
+.mbds-px-0-5  { padding-inline: var(--spacing-0-5); }
+.mbds-px-1    { padding-inline: var(--spacing-1); }
+.mbds-px-2    { padding-inline: var(--spacing-2); }
+.mbds-px-4    { padding-inline: var(--spacing-4); }
+
+/* ── Padding block (py) ────────────────────────────────────────────────────── */
+.mbds-py-0    { padding-block: 0; }
+.mbds-py-0-5  { padding-block: var(--spacing-0-5); }
+.mbds-py-1    { padding-block: var(--spacing-1); }
+.mbds-py-2    { padding-block: var(--spacing-2); }
+
+/* ── Margin-bottom (mb) ────────────────────────────────────────────────────── */
+.mbds-mb-0    { margin-bottom: 0; }
+.mbds-mb-1    { margin-bottom: var(--spacing-1); }
+.mbds-mb-2    { margin-bottom: var(--spacing-2); }
+.mbds-mb-4    { margin-bottom: var(--spacing-4); }
+.mbds-mb-6    { margin-bottom: var(--spacing-6); }
+.mbds-mb-8    { margin-bottom: var(--spacing-8); }
+
+/* ── Margin-top (mt) ───────────────────────────────────────────────────────── */
+.mbds-mt-0    { margin-top: 0; }
+.mbds-mt-0-5  { margin-top: var(--spacing-0-5); }  /* 2px */
+.mbds-mt-1    { margin-top: var(--spacing-1); }
+.mbds-mt-2    { margin-top: var(--spacing-2); }
+.mbds-mt-4    { margin-top: var(--spacing-4); }
+.mbds-mt-6    { margin-top: var(--spacing-6); }
+
+/* ── Margin (todos) ────────────────────────────────────────────────────────── */
+.mbds-m-0    { margin: 0; }

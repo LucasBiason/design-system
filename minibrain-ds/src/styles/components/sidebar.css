@@ -1,0 +1,241 @@
+/*
+ * ─── mbds-sidebar ────────────────────────────────────────────────────────────
+ * Sidebar lateral fixa com modos expanded/collapsed e variantes.
+ * Reusa custom properties --sidebar-width (16rem) e --sidebar-width-icon (3rem).
+ *
+ * Estrutura:
+ *   <div class="mbds-sidebar-wrapper">
+ *     <div class="mbds-sidebar-root" data-state="expanded" data-side="left" data-variant="sidebar">
+ *       <div class="mbds-sidebar-gap" data-state="expanded">
+ *         <div class="mbds-sidebar-gap-inner"></div>
+ *       </div>
+ *       <div class="mbds-sidebar-panel">
+ *         <div class="mbds-sidebar-inner" data-sidebar="sidebar">
+ *           <div class="mbds-sidebar-header">…</div>
+ *           <div class="mbds-sidebar-content">…</div>
+ *           <div class="mbds-sidebar-footer">…</div>
+ *         </div>
+ *       </div>
+ *     </div>
+ *   </div>
+ *
+ * Tokens: --sidebar (bg), --sidebar-foreground, --sidebar-accent,
+ *         --sidebar-accent-foreground, --sidebar-border, --sidebar-ring,
+ *         --radius, --spacing-*
+ */
+
+/* ── Provider wrapper ────────────────────────────────────────────────────── */
+.mbds-sidebar-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100svh;
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
+}
+
+/* ── Root ────────────────────────────────────────────────────────────────── */
+.mbds-sidebar-root {
+  /* container que envolve gap + panel */
+}
+
+/* ── Gap (espaço reservado no fluxo) ─────────────────────────────────────── */
+.mbds-sidebar-gap {
+  display: none;
+  color: hsl(var(--sidebar-foreground));
+}
+
+@media (min-width: 48rem) {
+  .mbds-sidebar-gap {
+    display: block;
+  }
+}
+
+.mbds-sidebar-gap-inner {
+  position: relative;
+  height: 100svh;
+  width: var(--sidebar-width);
+  transition: width var(--duration-base) linear;
+}
+
+.mbds-sidebar-gap[data-state="collapsed"] .mbds-sidebar-gap-inner {
+  width: var(--sidebar-width-icon);
+}
+
+/* ── Panel (sidebar fixa) ────────────────────────────────────────────────── */
+.mbds-sidebar-panel {
+  position: fixed;
+  inset-block: 0;
+  z-index: 10;
+  height: 100svh;
+  width: var(--sidebar-width);
+
+  display: none;
+  transition: width var(--duration-base) linear, left var(--duration-base) linear, right var(--duration-base) linear;
+}
+
+@media (min-width: 48rem) {
+  .mbds-sidebar-panel {
+    display: flex;
+  }
+}
+
+.mbds-sidebar-root[data-side="left"] .mbds-sidebar-panel  { left:  0; }
+.mbds-sidebar-root[data-side="right"] .mbds-sidebar-panel { right: 0; }
+
+.mbds-sidebar-root[data-side="left"][data-variant="sidebar"] .mbds-sidebar-panel  { border-right: 1px solid hsl(var(--sidebar-border)); }
+.mbds-sidebar-root[data-side="right"][data-variant="sidebar"] .mbds-sidebar-panel { border-left:  1px solid hsl(var(--sidebar-border)); }
+
+.mbds-sidebar-root[data-state="collapsed"] .mbds-sidebar-panel {
+  width: var(--sidebar-width-icon);
+}
+
+/* ── Inner (conteúdo da sidebar) ─────────────────────────────────────────── */
+.mbds-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: hsl(var(--sidebar));
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.mbds-sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+}
+
+/* ── Content (área principal scrollável) ─────────────────────────────────── */
+.mbds-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.mbds-sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+}
+
+/* ── Group (seção dentro da sidebar com label opcional) ──────────────────── */
+.mbds-sidebar-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  padding: var(--spacing-2);
+}
+
+.mbds-sidebar-group-label {
+  display: flex;
+  align-items: center;
+  height: var(--spacing-8, 2rem);
+  flex-shrink: 0;
+
+  padding-inline: var(--spacing-2);
+  border-radius: var(--radius, 0.5rem);
+
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium, 500);
+  color: hsl(var(--sidebar-foreground) / 0.7);
+}
+
+/* ── Menu (lista de itens) ───────────────────────────────────────────────── */
+.mbds-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ── Menu item (li wrapper) ──────────────────────────────────────────────── */
+.mbds-sidebar-menu-item {
+  position: relative;
+}
+
+/* ── Menu button (link ou button dentro do item) ─────────────────────────── */
+.mbds-sidebar-menu-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  width: 100%;
+  padding: var(--spacing-2);
+  overflow: hidden;
+
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius, 0.5rem);
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.mbds-sidebar-menu-button:hover {
+  background-color: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-accent-foreground));
+}
+
+.mbds-sidebar-menu-button:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--sidebar-ring) / 0.5);
+}
+
+.mbds-sidebar-menu-button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.mbds-sidebar-menu-button[data-active="true"] {
+  background-color: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-accent-foreground));
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.mbds-sidebar-menu-button > svg {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+.mbds-sidebar-menu-button > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badge à direita (numeric counter) */
+.mbds-sidebar-menu-button-badge {
+  margin-left: auto;
+}
+
+/* ── Separator ───────────────────────────────────────────────────────────── */
+.mbds-sidebar-separator {
+  height: 1px;
+  margin-inline: var(--spacing-2);
+  background-color: hsl(var(--sidebar-border));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbds-sidebar-gap-inner,
+  .mbds-sidebar-panel,
+  .mbds-sidebar-menu-button {
+    transition: none;
+  }
+}
